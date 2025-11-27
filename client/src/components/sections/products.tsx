@@ -74,7 +74,7 @@ export function Products() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const { toast } = useToast();
 
-  const categories = ["All", ...new Set(products.map(p => p.category))];
+  const categories = ["All", ...Array.from(new Set(products.map(p => p.category)))];
   
   const filteredProducts = activeCategory === "All" 
     ? products 
