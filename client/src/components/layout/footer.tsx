@@ -3,17 +3,17 @@ import logo from "@assets/logo.png";
 
 export function Footer() {
   return (
-    <footer className="bg-foreground text-white pt-16 pb-8">
+    <footer className="bg-foreground text-white pt-20 pb-10">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div className="col-span-1 md:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
-              <img src={logo} alt="Innovative & Innovators" className="h-12 w-auto rounded" />
-              <span className="font-heading font-bold text-xl">INNOVATIVE & INNOVATORS</span>
+            <div className="flex items-center gap-3 mb-6">
+              <img src={logo} alt="Innovative & Innovators Logo" className="h-12 w-auto rounded bg-white p-1" />
+              <span className="font-heading font-bold text-xl leading-tight">INNOVATIVE &<br/>INNOVATORS</span>
             </div>
-            <p className="text-white/60 text-sm mb-6 leading-relaxed">
-              Manufacturing excellence since 1990. Your trusted partner for aerosol and gas products, delivering quality and safety across India.
+            <p className="text-white/70 text-sm mb-6 leading-relaxed">
+              Your trusted manufacturing partner for high-quality aerosol and gas products since 1990. Serving households and industries across India with excellence and safety.
             </p>
             <div className="flex gap-4">
               {/* Social Links */}
@@ -22,7 +22,7 @@ export function Footer() {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="h-10 w-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#2e3192] transition-all cursor-pointer group"
-                title="View on IndiaMart"
+                title="Verified Supplier on IndiaMart"
               >
                 <ShoppingBag className="h-5 w-5 text-white group-hover:scale-110 transition-transform" />
               </a>
@@ -31,7 +31,7 @@ export function Footer() {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="h-10 w-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#ff9900] transition-all cursor-pointer group"
-                title="View on JustDial"
+                title="Rated on JustDial"
               >
                 <Globe className="h-5 w-5 text-white group-hover:scale-110 transition-transform" />
               </a>
@@ -40,33 +40,33 @@ export function Footer() {
 
           {/* Products */}
           <div>
-            <h4 className="text-lg font-heading font-bold mb-6 text-primary">Products</h4>
+            <h4 className="text-lg font-heading font-bold mb-6 text-primary">Our Products</h4>
             <ul className="space-y-3 text-sm text-white/70">
-              <li><a href="#" className="hover:text-white transition-colors">Room Fresheners</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Insect Repellents</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Gas Cartridges</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Industrial Sprays</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Private Label</a></li>
+              <li><a href="#products" className="hover:text-white transition-colors hover:translate-x-1 inline-block">Room Air Fresheners</a></li>
+              <li><a href="#products" className="hover:text-white transition-colors hover:translate-x-1 inline-block">Mosquito & Insect Killers</a></li>
+              <li><a href="#products" className="hover:text-white transition-colors hover:translate-x-1 inline-block">Butane Gas Cartridges</a></li>
+              <li><a href="#products" className="hover:text-white transition-colors hover:translate-x-1 inline-block">Industrial Rust Sprays</a></li>
+              <li><a href="#products" className="hover:text-white transition-colors hover:translate-x-1 inline-block">Pet Care Solutions</a></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div className="col-span-1 md:col-span-2">
-            <h4 className="text-lg font-heading font-bold mb-6 text-primary">Contact Us</h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <h4 className="text-lg font-heading font-bold mb-6 text-primary">Contact Information</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <MapPin className="h-5 w-5 text-accent shrink-0 mt-1" />
                   <div>
                     <p className="text-sm font-bold text-white">Head Office & Factory</p>
-                    <p className="text-sm text-white/60">No. 13, Reddiyar Street, Sooramangalam, Pondicherry – 605106</p>
+                    <p className="text-sm text-white/60 leading-relaxed">No. 13, Reddiyar Street, Sooramangalam, Pondicherry – 605106</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <MapPin className="h-5 w-5 text-accent shrink-0 mt-1" />
                   <div>
                     <p className="text-sm font-bold text-white">Chennai Branch</p>
-                    <p className="text-sm text-white/60">B002, Metrozone, Anna Nagar, Chennai</p>
+                    <p className="text-sm text-white/60 leading-relaxed">B002, Metrozone, Anna Nagar, Chennai</p>
                   </div>
                 </div>
               </div>
@@ -74,15 +74,17 @@ export function Footer() {
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-accent shrink-0" />
-                  <a href="mailto:info@innovative-innovators.com" className="text-sm text-white/70 hover:text-white">info@innovative-innovators.com</a>
+                  <a href="mailto:info@innovative-innovators.com" className="text-sm text-white/70 hover:text-white transition-colors">info@innovative-innovators.com</a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-accent shrink-0" />
                   <span className="text-sm text-white/70">+91 98765 43210</span>
                 </div>
                 <div className="mt-4 pt-4 border-t border-white/10">
-                  <p className="text-xs text-white/40">GST: 34AABCI0658L1ZJ</p>
-                  <p className="text-xs text-white/40">IEC: 0494004941</p>
+                  <div className="flex justify-between items-center">
+                    <p className="text-xs text-white/40">GST: <span className="text-white/60 font-mono">34AABCI0658L1ZJ</span></p>
+                    <p className="text-xs text-white/40">IEC: <span className="text-white/60 font-mono">0494004941</span></p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -92,8 +94,9 @@ export function Footer() {
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-white/40">© 2025 Innovative & Innovators Pvt Ltd. All rights reserved.</p>
           <div className="flex gap-6 text-xs text-white/40">
-            <a href="#" className="hover:text-white">Privacy Policy</a>
-            <a href="#" className="hover:text-white">Terms & Conditions</a>
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms & Conditions</a>
+            <a href="#" className="hover:text-white transition-colors">Sitemap</a>
           </div>
         </div>
       </div>

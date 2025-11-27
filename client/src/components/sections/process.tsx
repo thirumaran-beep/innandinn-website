@@ -4,23 +4,23 @@ export function Process() {
   const steps = [
     {
       icon: MessageSquare,
-      title: "1. Get In Touch",
-      desc: "Contact us via form, phone, or WhatsApp to start the conversation."
+      title: "1. Consultation",
+      desc: "Reach out via our form or WhatsApp. We discuss your product needs, volume, and customization requirements."
     },
     {
       icon: FileText,
-      title: "2. Discuss Requirements",
-      desc: "Tell us product types, volumes, packaging, and private-label needs."
+      title: "2. Proposal & Sampling",
+      desc: "We provide a transparent quote and, if needed, product samples for your approval to ensure quality match."
     },
     {
       icon: PackageCheck,
-      title: "3. Quote & Production",
-      desc: "Receive a detailed quote. On confirmation, production begins with quality checks."
+      title: "3. Production & QC",
+      desc: "Upon confirmation, our factory begins manufacturing with rigorous quality checks at every stage."
     },
     {
       icon: Truck,
-      title: "4. Delivery & Support",
-      desc: "Dispatched on time with full tracking and after-sales support."
+      title: "4. Dispatch & Delivery",
+      desc: "Your order is securely packed and dispatched via our reliable logistics partners for timely arrival."
     }
   ];
 
@@ -30,10 +30,10 @@ export function Process() {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-accent font-bold uppercase tracking-widest text-sm mb-2 block">How It Works</span>
-          <h2 className="text-4xl font-heading font-bold mb-4">Simple & Transparent Process</h2>
+          <span className="text-accent font-bold uppercase tracking-widest text-sm mb-2 block">Streamlined Operations</span>
+          <h2 className="text-4xl font-heading font-bold mb-4">A Simple, Transparent Ordering Process</h2>
           <p className="text-slate-400 text-lg">
-            From inquiry to delivery, we ensure a smooth experience for every client.
+            We make bulk manufacturing easy. From your first inquiry to the final delivery, experience a hassle-free workflow.
           </p>
         </div>
 
@@ -46,7 +46,7 @@ export function Process() {
               )}
               
               <div className="flex flex-col items-center text-center">
-                <div className="h-16 w-16 rounded-full bg-slate-800 border-2 border-slate-700 flex items-center justify-center mb-6 group-hover:border-accent group-hover:bg-accent group-hover:text-white transition-all duration-300 z-10">
+                <div className="h-16 w-16 rounded-full bg-slate-800 border-2 border-slate-700 flex items-center justify-center mb-6 group-hover:border-accent group-hover:bg-accent group-hover:text-white transition-all duration-300 z-10 shadow-lg shadow-black/20">
                   <step.icon className="h-7 w-7" />
                 </div>
                 <h3 className="text-xl font-heading font-bold mb-3 text-white">{step.title}</h3>
