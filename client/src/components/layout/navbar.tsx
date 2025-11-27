@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import logo from "@assets/logo.png";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,10 +35,8 @@ export function Navbar() {
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/">
-          <a className="flex items-center gap-2">
-            <div className={cn("h-10 w-10 bg-primary rounded flex items-center justify-center font-bold text-xl text-white")}>
-              I&I
-            </div>
+          <a className="flex items-center gap-3">
+            <img src={logo} alt="Innovative & Innovators" className="h-12 w-auto rounded" />
             <div className="flex flex-col">
               <span className={cn("font-heading font-bold text-lg leading-none tracking-tight", isScrolled ? "text-primary" : "text-white")}>
                 INNOVATIVE &

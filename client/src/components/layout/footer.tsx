@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail } from "lucide-react";
+import logo from "@assets/logo.png";
 
 export function Footer() {
   return (
@@ -7,10 +8,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="col-span-1 md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="h-8 w-8 bg-primary rounded flex items-center justify-center font-bold text-lg text-white">
-                I&I
-              </div>
+            <div className="flex items-center gap-3 mb-4">
+              <img src={logo} alt="Innovative & Innovators" className="h-12 w-auto rounded" />
               <span className="font-heading font-bold text-xl">INNOVATIVE & INNOVATORS</span>
             </div>
             <p className="text-white/60 text-sm mb-6 leading-relaxed">
