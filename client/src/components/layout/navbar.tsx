@@ -36,7 +36,11 @@ export function Navbar() {
         {/* Logo */}
         <Link href="/">
           <a className="flex items-center gap-3">
-            <img src={logo} alt="Innovative & Innovators" className="h-12 w-auto rounded" />
+            <img 
+              src={logo} 
+              alt="Innovative & Innovators" 
+              className="h-16 w-auto object-contain" 
+            />
             <div className="flex flex-col">
               <span className={cn("font-heading font-bold text-lg leading-none tracking-tight", isScrolled ? "text-primary" : "text-white")}>
                 INNOVATIVE &

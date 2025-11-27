@@ -1,11 +1,10 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import freshenerImg from "@assets/generated_images/collection_of_premium_room_freshener_aerosol_cans.png";
-import gasImg from "@assets/generated_images/butane_gas_cartridges_and_lighter_fuel_cans.png";
-import insectImg from "@assets/generated_images/insect_repellent_spray_cans.png";
-
-// Reusing one image for the specialty category for now as placeholder
-const specialtyImg = freshenerImg; 
+import freshenerImg from "@assets/product-air-freshener.png";
+import insectImg from "@assets/product-insect-killer.png";
+import specialtyImg from "@assets/product-rust-spray.png";
+import petImg from "@assets/product-pet-spray.png";
+import gasImg from "@assets/generated_images/butane_gas_cartridges_and_lighter_fuel_cans.png"; // Keeping generated for now as no upload matched perfectly
 
 export function Products() {
   const categories = [
@@ -16,22 +15,22 @@ export function Products() {
       color: "bg-blue-50"
     },
     {
-      title: "Gas & Cartridges",
-      description: "Lighter Gas, Butane Gas Cartridge Cans, R134a Refrigerant Gas.",
-      image: gasImg,
-      color: "bg-orange-50"
-    },
-    {
       title: "Insect Control",
       description: "Aerosol Insect Sprays, Herbal Repellents, Creams, Multi-Insect Killers.",
       image: insectImg,
       color: "bg-green-50"
     },
     {
-      title: "Specialty & OEM",
-      description: "Odor Removal Chemicals, Custom Formulations, Private Label Services.",
+      title: "Specialty & Chemical",
+      description: "Rust Release Sprays, Odor Removal Chemicals, Custom Formulations.",
       image: specialtyImg,
       color: "bg-slate-50"
+    },
+    {
+      title: "Pet Care & Veterinary",
+      description: "Tick & Flea Sprays, Veterinary Pharmaceuticals, Pet Hygiene Products.",
+      image: petImg,
+      color: "bg-orange-50"
     }
   ];
 
