@@ -16,10 +16,10 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 relative z-10 pt-20">
+      <div className="container mx-auto px-4 relative z-10 pt-32 md:pt-40">
         <div className="max-w-4xl animate-in slide-in-from-bottom-10 duration-700 fade-in">
           
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-6 leading-tight">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 leading-tight">
             India's Trusted Manufacturer of <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/80">
               Premium Aerosols & Gas Products
