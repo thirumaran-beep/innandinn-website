@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, ShoppingBag, Globe } from "lucide-react";
 import logo from "@assets/logo.png";
 
 export function Footer() {
@@ -16,10 +16,25 @@ export function Footer() {
               Manufacturing excellence since 1990. Your trusted partner for aerosol and gas products, delivering quality and safety across India.
             </p>
             <div className="flex gap-4">
-              {/* Social placeholders */}
-              <div className="h-8 w-8 bg-white/10 rounded-full hover:bg-primary transition-colors cursor-pointer"></div>
-              <div className="h-8 w-8 bg-white/10 rounded-full hover:bg-primary transition-colors cursor-pointer"></div>
-              <div className="h-8 w-8 bg-white/10 rounded-full hover:bg-primary transition-colors cursor-pointer"></div>
+              {/* Social Links */}
+              <a 
+                href="https://www.indiamart.com/innovative-innovators/profile.html?srsltid=AfmBOooS5ugvbhABFzI27MgI7fc2pEo9R2aB04qdHgcHFb9RW9EC2Dsk" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="h-10 w-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#2e3192] transition-all cursor-pointer group"
+                title="View on IndiaMart"
+              >
+                <ShoppingBag className="h-5 w-5 text-white group-hover:scale-110 transition-transform" />
+              </a>
+              <a 
+                href="https://www.justdial.com/Chennai/Innovative-Innovators-PVT-LTD-Near-M-R-Hospital-Aminjikarai/044P7003771_BZDET" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="h-10 w-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#ff9900] transition-all cursor-pointer group"
+                title="View on JustDial"
+              >
+                <Globe className="h-5 w-5 text-white group-hover:scale-110 transition-transform" />
+              </a>
             </div>
           </div>
 
