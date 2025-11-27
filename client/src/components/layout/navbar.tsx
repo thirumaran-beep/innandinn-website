@@ -28,8 +28,7 @@ export function Navbar() {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent",
-        isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm border-border" : "bg-transparent text-white"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b shadow-sm border-border bg-white/95 backdrop-blur-md"
       )}
     >
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
@@ -42,10 +41,10 @@ export function Navbar() {
               className="h-16 w-auto object-contain" 
             />
             <div className="flex flex-col">
-              <span className={cn("font-heading font-bold text-lg leading-none tracking-tight", isScrolled ? "text-primary" : "text-white")}>
+              <span className={cn("font-heading font-bold text-lg leading-none tracking-tight text-primary")}>
                 INNOVATIVE &
               </span>
-              <span className={cn("font-heading font-bold text-lg leading-none tracking-tight", isScrolled ? "text-foreground" : "text-white/90")}>
+              <span className={cn("font-heading font-bold text-lg leading-none tracking-tight text-foreground")}>
                 INNOVATORS
               </span>
             </div>
@@ -59,8 +58,7 @@ export function Navbar() {
               key={link.name}
               href={link.href}
               className={cn(
-                "text-sm font-medium uppercase tracking-wide transition-colors hover:text-accent",
-                isScrolled ? "text-foreground" : "text-white/80"
+                "text-sm font-medium uppercase tracking-wide transition-colors hover:text-accent text-foreground"
               )}
             >
               {link.name}
@@ -68,8 +66,7 @@ export function Navbar() {
           ))}
           <Button 
             className={cn(
-              "font-heading tracking-wider",
-              isScrolled ? "" : "bg-white text-primary hover:bg-white/90"
+              "font-heading tracking-wider bg-primary text-white hover:bg-primary/90"
             )}
             size="sm"
           >
@@ -83,9 +80,9 @@ export function Navbar() {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? (
-            <X className={cn("h-6 w-6", isScrolled ? "text-foreground" : "text-white")} />
+            <X className={cn("h-6 w-6 text-foreground")} />
           ) : (
-            <Menu className={cn("h-6 w-6", isScrolled ? "text-foreground" : "text-white")} />
+            <Menu className={cn("h-6 w-6 text-foreground")} />
           )}
         </button>
       </div>

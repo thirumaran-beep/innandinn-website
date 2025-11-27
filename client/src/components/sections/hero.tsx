@@ -18,9 +18,6 @@ export function Hero() {
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10 pt-20">
         <div className="max-w-4xl animate-in slide-in-from-bottom-10 duration-700 fade-in">
-          <div className="inline-block bg-accent/10 text-accent border border-accent/20 px-3 py-1 rounded text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-sm">
-            Leading Aerosol Manufacturer Since 1990
-          </div>
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-6 leading-tight">
             India's Trusted Manufacturer of <br />
@@ -37,7 +34,7 @@ export function Hero() {
             <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-heading tracking-wide text-lg h-14 px-8 shadow-lg shadow-primary/20 transition-all hover:scale-105">
               Get a Bulk Quote
             </Button>
-            <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 hover:border-white font-heading tracking-wide text-lg h-14 px-8 backdrop-blur-sm transition-all">
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 hover:border-white font-heading tracking-wide text-lg h-14 px-8 transition-all">
               Explore Catalog <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
