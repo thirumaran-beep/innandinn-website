@@ -31,15 +31,15 @@ export function Navbar() {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b shadow-sm border-border bg-white/95 backdrop-blur-md"
       )}
     >
-      <div className="container mx-auto px-4 h-20 flex items-center justify-between">
+      <div className="container mx-auto px-4 h-auto py-3 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
           <img 
             src={logo} 
             alt="Innovative & Innovators - Aerosol Manufacturing" 
-            className="h-16 w-auto object-contain" 
+            className="h-24 w-auto object-contain" 
           />
-          <span className={cn("font-heading font-bold text-sm leading-none tracking-tight")}>
+          <span className={cn("font-heading font-bold text-base leading-none tracking-tight")}>
             <span className="text-primary">INNOVATIVE</span>
             <span className="text-green-600 mx-1">&</span>
             <span className="text-primary">INNOVATORS PVT LTD</span>
