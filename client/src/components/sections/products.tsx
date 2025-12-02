@@ -69,6 +69,7 @@ export function Products() {
   const [isDragging, setIsDragging] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const gridRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
   const categories = ["All", ...Array.from(new Set(products.map(p => p.category)))];
@@ -125,6 +126,18 @@ export function Products() {
     const section = document.getElementById('products');
     if (section) {
       section.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+  };
+
+  const scrollFormUp = () => {
+    if (formRef.current) {
+      formRef.current.scrollTop = Math.max(0, formRef.current.scrollTop - 150);
+    }
+  };
+
+  const scrollFormDown = () => {
+    if (formRef.current) {
+      formRef.current.scrollTop = Math.min(formRef.current.scrollHeight, formRef.current.scrollTop + 150);
     }
   };
 
@@ -293,38 +306,58 @@ export function Products() {
               </div>
               
               {/* FORM SECTION - RESPONSIVE */}
-              <div className="w-full md:w-2/5 p-3 sm:p-5 md:p-8 flex flex-col overflow-y-auto overflow-x-hidden flex-1 min-h-0">
-                <DialogHeader className="mb-4 sm:mb-6">
-                  <DialogTitle className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-2">
-                    {selectedProduct.name}
-                  </DialogTitle>
-                  <DialogDescription className="text-xs sm:text-base text-slate-600">
-                    {selectedProduct.description}
-                  </DialogDescription>
-                </DialogHeader>
+              <div className="w-full md:w-2/5 bg-white p-3 sm:p-5 md:p-6 flex flex-col overflow-hidden flex-1 min-h-0 relative" ref={formRef}>
+                {/* Scroll Up Button */}
+                <button
+                  onClick={scrollFormUp}
+                  className="absolute top-2 right-2 md:right-4 p-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-full transition-all z-20"
+                  aria-label="Scroll form up"
+                >
+                  <ChevronUp className="h-4 w-4" />
+                </button>
 
-                <div className="space-y-3 sm:space-y-4 flex-grow">
-                  <div className="bg-blue-50 p-2 sm:p-3 rounded border border-blue-100 text-xs sm:text-sm text-blue-800">
-                    <strong>Request Bulk Quote</strong> for competitive pricing on large orders.
+                <div className="overflow-y-auto overflow-x-hidden flex-1 pr-2">
+                  <DialogHeader className="mb-4 sm:mb-6">
+                    <DialogTitle className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-2">
+                      {selectedProduct.name}
+                    </DialogTitle>
+                    <DialogDescription className="text-xs sm:text-base text-slate-600">
+                      {selectedProduct.description}
+                    </DialogDescription>
+                  </DialogHeader>
+
+                  <div className="space-y-3 sm:space-y-4">
+                    <div className="bg-blue-50 p-2 sm:p-3 rounded border border-blue-100 text-xs sm:text-sm text-blue-800">
+                      <strong>Request Bulk Quote</strong> for competitive pricing on large orders.
+                    </div>
+                    
+                    <form id="enquiry-form" onSubmit={handleEnquiry} className="space-y-2 sm:space-y-3 mt-3 sm:mt-4">
+                      <Label htmlFor="email" className="text-xs sm:text-sm">Your Email</Label>
+                      <Input id="email" type="email" placeholder="Enter your email" required className="text-xs sm:text-sm h-8 sm:h-10" />
+                      
+                      <Label htmlFor="phone" className="text-xs sm:text-sm">Phone Number</Label>
+                      <Input id="phone" type="tel" placeholder="+91 98765 43210" required className="text-xs sm:text-sm h-8 sm:h-10" />
+                      
+                      <Label htmlFor="quantity" className="text-xs sm:text-sm">Estimated Quantity (Units)</Label>
+                      <Input id="quantity" type="number" placeholder="e.g. 500, 1000" className="text-xs sm:text-sm h-8 sm:h-10" />
+                    </form>
                   </div>
-                  
-                  <form id="enquiry-form" onSubmit={handleEnquiry} className="space-y-2 sm:space-y-3 mt-3 sm:mt-4">
-                    <Label htmlFor="email" className="text-xs sm:text-sm">Your Email</Label>
-                    <Input id="email" type="email" placeholder="Enter your email" required className="text-xs sm:text-sm h-8 sm:h-10" />
-                    
-                    <Label htmlFor="phone" className="text-xs sm:text-sm">Phone Number</Label>
-                    <Input id="phone" type="tel" placeholder="+91 98765 43210" required className="text-xs sm:text-sm h-8 sm:h-10" />
-                    
-                    <Label htmlFor="quantity" className="text-xs sm:text-sm">Estimated Quantity (Units)</Label>
-                    <Input id="quantity" type="number" placeholder="e.g. 500, 1000" className="text-xs sm:text-sm h-8 sm:h-10" />
-                  </form>
+
+                  <DialogFooter className="mt-6 sm:mt-8 pt-3 sm:pt-4 border-t border-slate-100">
+                    <Button type="submit" form="enquiry-form" className="w-full bg-primary hover:bg-primary/90 text-sm sm:text-lg font-heading h-10 sm:h-12 transition-all hover:shadow-lg active:scale-95">
+                      Get Bulk Quote
+                    </Button>
+                  </DialogFooter>
                 </div>
 
-                <DialogFooter className="mt-6 sm:mt-8 pt-3 sm:pt-4 border-t border-slate-100">
-                  <Button type="submit" form="enquiry-form" className="w-full bg-primary hover:bg-primary/90 text-sm sm:text-lg font-heading h-10 sm:h-12 transition-all hover:shadow-lg active:scale-95">
-                    Get Bulk Quote
-                  </Button>
-                </DialogFooter>
+                {/* Scroll Down Button */}
+                <button
+                  onClick={scrollFormDown}
+                  className="absolute bottom-2 right-2 md:right-4 p-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-full transition-all z-20"
+                  aria-label="Scroll form down"
+                >
+                  <ChevronDown className="h-4 w-4" />
+                </button>
               </div>
             </div>
           )}

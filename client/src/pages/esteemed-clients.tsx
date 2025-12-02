@@ -54,6 +54,7 @@ export default function EsteemedClients() {
   const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const galleryRef = useRef<HTMLDivElement>(null);
+  const modalContentRef = useRef<HTMLDivElement>(null);
 
   const handleMouseWheel = (e: React.WheelEvent) => {
     e.preventDefault();
@@ -81,6 +82,18 @@ export default function EsteemedClients() {
 
   const scrollToBottom = () => {
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  };
+
+  const scrollModalUp = () => {
+    if (modalContentRef.current) {
+      modalContentRef.current.scrollTop = Math.max(0, modalContentRef.current.scrollTop - 150);
+    }
+  };
+
+  const scrollModalDown = () => {
+    if (modalContentRef.current) {
+      modalContentRef.current.scrollTop = Math.min(modalContentRef.current.scrollHeight, modalContentRef.current.scrollTop + 150);
+    }
   };
 
   return (
@@ -145,9 +158,17 @@ export default function EsteemedClients() {
 
       {/* RESPONSIVE ZOOM MODAL */}
       <Dialog open={!!selectedImage} onOpenChange={(open) => { if (!open) { setSelectedImage(null); setZoom(1); setImagePosition({ x: 0, y: 0 }); }}}>
-        <DialogContent className="w-[95vw] sm:w-[90vw] md:max-w-[1000px] p-0 bg-white overflow-hidden max-h-[95vh] rounded-lg">
+        <DialogContent className="w-[95vw] sm:w-[90vw] md:max-w-[1000px] p-0 bg-white overflow-hidden max-h-[95vh] rounded-lg flex flex-col">
           {selectedImage && (
-            <div className="flex flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4 p-3 sm:p-4 md:p-6 bg-white max-h-[95vh] overflow-y-auto">
+            <div className="flex flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4 p-3 sm:p-4 md:p-6 bg-white max-h-[95vh] overflow-y-auto flex-1 relative" ref={modalContentRef}>
+              <button
+                onClick={scrollModalUp}
+                className="sticky top-0 p-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-full transition-all z-20 self-end"
+                aria-label="Scroll modal up"
+              >
+                <ChevronUp className="h-4 w-4" />
+              </button>
+
               <div className="text-center w-full">
                 <h2 className="text-lg sm:text-xl md:text-2xl font-heading font-bold text-slate-900 line-clamp-2">{selectedImage.title}</h2>
               </div>
@@ -214,6 +235,14 @@ export default function EsteemedClients() {
               <p className="text-xs text-slate-500 text-center">
                 📱 Mobile • 💻 Desktop • 📑 Tablet responsive • Zoom: 50%-300%
               </p>
+
+              <button
+                onClick={scrollModalDown}
+                className="p-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-full transition-all z-20"
+                aria-label="Scroll modal down"
+              >
+                <ChevronDown className="h-4 w-4" />
+              </button>
             </div>
           )}
         </DialogContent>
