@@ -7,7 +7,6 @@ import { ThemeProvider } from "next-themes";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import EsteemedClients from "@/pages/esteemed-clients";
-import ChatbotWidget from "@/components/chatbot-widget";
 
 function Router() {
   return (
@@ -26,7 +25,6 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Router />
-          <ChatbotWidget />
         </TooltipProvider>
       </QueryClientProvider>
     </ThemeProvider>

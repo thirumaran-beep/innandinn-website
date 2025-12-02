@@ -1,120 +1,115 @@
-import { useState } from "react";
+import { Link } from "wouter";
+import { useState, useEffect } from "react";
+import { Menu, X, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, X, Send } from "lucide-react";
 import { cn } from "@/lib/utils";
+import logo from "@assets/logo.png";
 
-export default function ChatbotWidget() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([
-    { id: 1, text: "👋 Welcome! How can we help you today?", sender: "bot" },
-  ]);
-  const [inputValue, setInputValue] = useState("");
+export function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleSendMessage = () => {
-    if (!inputValue.trim()) return;
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    const userMessage = { id: Date.now(), text: inputValue, sender: "user" };
-    setMessages([...messages, userMessage]);
-    setInputValue("");
-
-    setTimeout(() => {
-      const botMessage = {
-        id: Date.now() + 1,
-        text: "Thank you for your inquiry! Our team will respond shortly with detailed information about our products and bulk pricing.",
-        sender: "bot",
-      };
-      setMessages((prev) => [...prev, botMessage]);
-    }, 500);
-  };
+  const navLinks = [
+    { name: "Home", href: "#hero" },
+    { name: "About", href: "#about" },
+    { name: "Products", href: "#products" },
+    { name: "Process", href: "#process" },
+    { name: "Contact", href: "#contact" },
+  ];
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
-      {isOpen && (
-        <div className="absolute bottom-20 right-0 w-96 max-w-[90vw] bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl shadow-2xl flex flex-col animate-in fade-in zoom-in-95 duration-300">
-          {/* Header */}
-          <div className="bg-gradient-to-r from-primary to-primary/80 text-white p-4 rounded-t-xl flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <MessageCircle className="w-5 h-5" />
-              <div>
-                <h3 className="font-bold text-sm">Support Assistant</h3>
-                <p className="text-xs opacity-90">Innovative & Innovators</p>
-              </div>
-            </div>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="hover:bg-white/20 p-1 rounded transition-colors"
-              aria-label="Close chatbot"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
+    <nav
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b shadow-sm border-border bg-white/95 backdrop-blur-md"
+      )}
+    >
+      <div className="container mx-auto px-4 h-auto py-3 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity">
+          <img 
+            src={logo} 
+            alt="Innovative & Innovators - Aerosol Manufacturing" 
+            className="h-12 sm:h-16 md:h-24 w-auto object-contain" 
+          />
+          <span className={cn("font-heading font-bold text-xs sm:text-sm md:text-base leading-none tracking-tight")}>
+            <span className="text-primary">INNOVATIVE</span>
+            <span className="text-green-600 mx-0.5 sm:mx-1">&</span>
+            <span className="text-primary">INNOVATORS PVT LTD</span>
+          </span>
+        </Link>
 
-          {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 max-h-96 space-y-3 dark:bg-slate-900/50">
-            {messages.map((msg) => (
-              <div
-                key={msg.id}
-                className={cn(
-                  "flex",
-                  msg.sender === "user" ? "justify-end" : "justify-start"
-                )}
-              >
-                <div
-                  className={cn(
-                    "max-w-xs px-3 py-2 rounded-lg text-sm",
-                    msg.sender === "user"
-                      ? "bg-primary text-white rounded-br-none"
-                      : "bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 rounded-bl-none"
-                  )}
-                >
-                  {msg.text}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Input */}
-          <div className="border-t border-slate-200 dark:border-slate-800 p-3 flex gap-2 bg-slate-50 dark:bg-slate-900 rounded-b-xl">
-            <input
-              type="text"
-              placeholder="Type your message..."
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
-              className="flex-1 px-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary dark:text-white"
-              data-testid="chatbot-input"
-            />
-            <Button
-              size="sm"
-              onClick={handleSendMessage}
-              className="bg-primary hover:bg-primary/90"
-              data-testid="chatbot-send"
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className={cn(
+                "text-sm font-medium uppercase tracking-wide transition-colors hover:text-accent text-foreground"
+              )}
+              aria-label={`Navigate to ${link.name}`}
             >
-              <Send className="w-4 h-4" />
-            </Button>
-          </div>
+              {link.name}
+            </a>
+          ))}
+          <Button 
+            data-testid="navbar-quote-button"
+            onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
+            className={cn(
+              "font-heading tracking-wider bg-primary text-white hover:bg-primary/90 transition-all duration-300 hover:shadow-lg"
+            )}
+            size="sm"
+          >
+            Get Quote
+          </Button>
+        </div>
+
+        {/* Mobile Toggle */}
+        <button
+          className="md:hidden"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle mobile menu"
+          aria-expanded={mobileMenuOpen}
+        >
+          {mobileMenuOpen ? (
+            <X className={cn("h-6 w-6 text-foreground")} />
+          ) : (
+            <Menu className={cn("h-6 w-6 text-foreground")} />
+          )}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden absolute top-20 left-0 right-0 bg-background border-b border-border shadow-lg p-4 flex flex-col gap-4 animate-in slide-in-from-top-5" role="navigation" aria-label="Mobile menu">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-foreground font-heading text-base sm:text-lg py-2 border-b border-border/50 hover:text-primary transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+              aria-label={`Navigate to ${link.name}`}
+            >
+              {link.name}
+            </a>
+          ))}
+          <Button 
+            data-testid="mobile-quote-button"
+            onClick={() => { document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }}
+            className="w-full mt-2 bg-primary hover:bg-primary/90 text-white font-heading"
+          >
+            Request Quote
+          </Button>
         </div>
       )}
-
-      {/* Toggle Button */}
-      <Button
-        onClick={() => setIsOpen(!isOpen)}
-        className={cn(
-          "rounded-full w-16 h-16 shadow-lg animate-bounce",
-          isOpen
-            ? "bg-slate-700 hover:bg-slate-800"
-            : "bg-primary hover:bg-primary/90"
-        )}
-        size="lg"
-        data-testid="chatbot-toggle"
-        aria-label="Toggle chatbot"
-      >
-        {isOpen ? (
-          <X className="w-6 h-6" />
-        ) : (
-          <MessageCircle className="w-6 h-6" />
-        )}
-      </Button>
-    </div>
+    </nav>
   );
 }
