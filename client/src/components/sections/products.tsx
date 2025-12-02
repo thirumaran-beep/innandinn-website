@@ -28,17 +28,17 @@ import img17 from "@assets/17_1764659739450.png";
 import img18 from "@assets/18_1764659739450.png";
 import img19 from "@assets/19_1764659739450.png";
 import img20 from "@assets/20_1764659739451.png";
-import img21 from "@assets/21_1764670103312.png";
-import img22 from "@assets/22_1764670103312.png";
-import img23 from "@assets/23_1764670103306.png";
-import img24 from "@assets/24_1764670103307.png";
-import img25 from "@assets/25_1764670103308.png";
-import img26 from "@assets/26_1764670103308.png";
-import img27 from "@assets/27_1764670103309.png";
-import img28 from "@assets/28_1764670103309.png";
-import img29 from "@assets/29_1764670103310.png";
-import img30 from "@assets/30_1764670103311.png";
-import img31 from "@assets/31_1764670103311.png";
+import img21 from "@assets/21_1764670603769.png";
+import img22 from "@assets/22_1764670603774.png";
+import img23 from "@assets/23_1764670603769.png";
+import img24 from "@assets/24_1764670603770.png";
+import img25 from "@assets/25_1764670603771.png";
+import img26 from "@assets/26_1764670603771.png";
+import img27 from "@assets/27_1764670603772.png";
+import img28 from "@assets/28_1764670603772.png";
+import img29 from "@assets/29_1764670603773.png";
+import img30 from "@assets/30_1764670603773.png";
+import img31 from "@assets/31_1764670603774.png";
 
 interface Product {
   id: number;
