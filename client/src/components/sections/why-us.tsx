@@ -38,16 +38,16 @@ export function WhyUs() {
   return (
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl font-heading font-bold text-foreground mb-4">Why Partner With Innovative & Innovators?</h2>
-          <p className="text-muted-foreground text-lg">
+        <div className="text-center max-w-3xl mx-auto mb-16 animate-in fade-in slide-in-from-top-8 duration-1000">
+          <h2 className="text-4xl font-heading font-bold text-foreground mb-4 animate-in fade-in delay-200 duration-1000">Why Partner With Innovative & Innovators?</h2>
+          <p className="text-muted-foreground text-lg animate-in fade-in delay-300 duration-1000">
             We don't just manufacture products; we engineer trust. Here’s why leading brands and distributors rely on us.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="border-none shadow-sm hover:shadow-xl transition-all duration-300 bg-white group hover:-translate-y-1">
+            <Card key={index} className={`border-none shadow-sm hover:shadow-xl transition-all duration-300 bg-white group hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-8`} style={{ animationDelay: `${index * 100}ms` }}>
               <CardContent className="p-8">
                 <div className="h-14 w-14 rounded-lg bg-primary/5 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                   <feature.icon className="h-7 w-7" />

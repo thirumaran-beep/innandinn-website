@@ -7,14 +7,14 @@ export function About() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Text Content */}
-          <div className="order-2 lg:order-1">
-            <span className="text-accent font-bold uppercase tracking-widest text-sm mb-2 block">Our Story</span>
-            <h2 className="text-4xl font-heading font-bold text-foreground mb-6">
+          <div className="order-2 lg:order-1 animate-in fade-in slide-in-from-left-8 duration-1000">
+            <span className="text-accent font-bold uppercase tracking-widest text-sm mb-2 block animate-in fade-in delay-200">Our Story</span>
+            <h2 className="text-4xl font-heading font-bold text-foreground mb-6 animate-in fade-in slide-in-from-left-8 delay-300 duration-1000">
               Defining Industry Standards <br/> Since 1990
             </h2>
             
             <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
-              <p>
+              <p className="animate-in fade-in delay-500 duration-1000">
                 <strong>Innovative & Innovators Pvt Ltd</strong> started with a singular vision: to bring world-class aerosol and gas products to the Indian market. What began as a modest operation in Pondicherry has evolved into a manufacturing powerhouse.
               </p>
               <p>
@@ -38,12 +38,12 @@ export function About() {
           </div>
 
           {/* Image Content */}
-          <div className="order-1 lg:order-2 relative">
-            <div className="relative rounded-lg overflow-hidden shadow-2xl transform lg:rotate-2 hover:rotate-0 transition-transform duration-500">
+          <div className="order-1 lg:order-2 relative animate-in fade-in slide-in-from-right-8 duration-1000">
+            <div className="relative rounded-lg overflow-hidden shadow-2xl transform lg:rotate-2 hover:rotate-0 transition-transform duration-500 hover:scale-105">
               <img 
                 src={aboutImg} 
                 alt="Innovative & Innovators Manufacturing Warehouse" 
-                className="w-full h-auto object-cover"
+                className="w-full h-auto object-cover animate-in zoom-in duration-1000 delay-300"
               />
               <div className="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
             </div>
