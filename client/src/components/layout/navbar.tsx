@@ -43,7 +43,7 @@ export function Navbar() {
             <span className={cn("font-heading font-bold text-sm leading-none tracking-tight text-primary")}>
               INNOVATIVE & INNOVATORS
             </span>
-            <span className={cn("font-heading font-bold text-xs leading-none tracking-widest text-slate-600")}>
+            <span className={cn("font-heading font-bold text-xs leading-none tracking-widest text-primary")}>
               PVT LTD
             </span>
           </div>
