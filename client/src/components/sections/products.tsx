@@ -238,12 +238,12 @@ export function Products() {
 
       {/* RESPONSIVE MODAL */}
       <Dialog open={!!selectedProduct} onOpenChange={(open) => { if (!open) { setSelectedProduct(null); setZoom(1); setImagePosition({ x: 0, y: 0 }); }}}>
-        <DialogContent className="w-[95vw] sm:w-[90vw] md:max-w-[1200px] p-0 bg-white rounded-lg max-h-[95vh] overflow-hidden flex flex-col">
+        <DialogContent className="w-[95vw] sm:w-[90vw] md:max-w-[1200px] p-0 bg-white rounded-lg max-h-[95vh] overflow-hidden flex flex-col pr-0">
           {selectedProduct && (
             <div className="flex flex-col md:flex-row w-full h-full overflow-hidden flex-1">
               {/* IMAGE SECTION - RESPONSIVE */}
-              <div className="w-full md:w-3/5 bg-white p-3 sm:p-4 md:p-4 flex flex-col items-center justify-center relative min-h-[350px] sm:min-h-[450px] md:min-h-full border-b md:border-b-0 md:border-r border-slate-200 gap-2 pt-8 sm:pt-8 md:pt-4">
-                <div className="absolute top-3 sm:top-4 left-3 sm:left-4 text-xs font-bold text-slate-600 uppercase tracking-widest z-10 bg-white px-2 py-1 rounded">
+              <div className="w-full md:w-3/5 bg-white p-3 sm:p-4 md:p-4 flex flex-col items-center justify-center relative min-h-[350px] sm:min-h-[450px] md:min-h-full border-b md:border-b-0 md:border-r border-slate-200 gap-2 pt-8 sm:pt-8 md:pt-4 mr-0">
+                <div className="absolute top-10 sm:top-10 left-3 sm:left-4 text-xs font-bold text-slate-600 uppercase tracking-widest z-10 bg-white px-2 py-1 rounded shadow-sm">
                   {selectedProduct.category}
                 </div>
                 
@@ -306,17 +306,18 @@ export function Products() {
               </div>
               
               {/* FORM SECTION - RESPONSIVE */}
-              <div className="w-full md:w-2/5 bg-white p-3 sm:p-5 md:p-6 flex flex-col overflow-hidden flex-1 min-h-0 relative pt-12 sm:pt-10 md:pt-6" ref={formRef}>
+              <div className="w-full md:w-2/5 bg-white p-3 sm:p-5 md:p-6 flex flex-col overflow-hidden flex-1 min-h-0 relative pt-14 sm:pt-12 md:pt-8" ref={formRef}>
                 {/* Scroll Up Button */}
                 <button
                   onClick={scrollFormUp}
-                  className="absolute top-1 sm:top-2 right-2 sm:right-3 md:right-4 p-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-full transition-all z-20"
+                  className="absolute top-2 sm:top-3 md:top-4 right-3 sm:right-4 md:right-5 p-2.5 bg-primary hover:bg-primary/90 text-white rounded-full transition-all z-50 shadow-md hover:shadow-lg"
                   aria-label="Scroll form up"
+                  data-testid="button-scroll-form-up"
                 >
-                  <ChevronUp className="h-4 w-4" />
+                  <ChevronUp className="h-5 w-5" />
                 </button>
 
-                <div className="overflow-y-auto overflow-x-hidden flex-1 pr-2 pt-2">
+                <div className="overflow-y-auto overflow-x-hidden flex-1 pr-3">
                   <DialogHeader className="mb-4 sm:mb-6">
                     <DialogTitle className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-2">
                       {selectedProduct.name}
@@ -343,7 +344,7 @@ export function Products() {
                     </form>
                   </div>
 
-                  <DialogFooter className="mt-6 sm:mt-8 pt-4 sm:pt-5 border-t border-slate-100 pb-10 sm:pb-8 md:pb-4">
+                  <DialogFooter className="mt-6 sm:mt-8 pt-4 sm:pt-5 border-t border-slate-100 pb-12 sm:pb-10 md:pb-6">
                     <Button type="submit" form="enquiry-form" className="w-full bg-primary hover:bg-primary/90 text-sm sm:text-lg font-heading h-10 sm:h-12 transition-all hover:shadow-lg active:scale-95">
                       Get Bulk Quote
                     </Button>
@@ -353,10 +354,11 @@ export function Products() {
                 {/* Scroll Down Button */}
                 <button
                   onClick={scrollFormDown}
-                  className="absolute bottom-1 sm:bottom-2 right-2 sm:right-3 md:right-4 p-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-full transition-all z-20"
+                  className="absolute bottom-2 sm:bottom-3 md:bottom-4 right-3 sm:right-4 md:right-5 p-2.5 bg-primary hover:bg-primary/90 text-white rounded-full transition-all z-50 shadow-md hover:shadow-lg"
                   aria-label="Scroll form down"
+                  data-testid="button-scroll-form-down"
                 >
-                  <ChevronDown className="h-4 w-4" />
+                  <ChevronDown className="h-5 w-5" />
                 </button>
               </div>
             </div>
