@@ -29,16 +29,15 @@ import img18 from "@assets/18_1764659739450.png";
 import img19 from "@assets/19_1764659739450.png";
 import img20 from "@assets/20_1764659739451.png";
 import img21 from "@assets/21_1764667922969.png";
-import img22 from "@assets/22_1764670873377.png";
-import img23 from "@assets/23_1764670873372.png";
-import img24 from "@assets/24_1764670873373.png";
-import img25 from "@assets/25_1764670873373.png";
-import img26 from "@assets/26_1764670873374.png";
-import img27 from "@assets/27_1764670873374.png";
-import img28 from "@assets/28_1764670873375.png";
-import img29 from "@assets/29_1764670873375.png";
-import img30 from "@assets/30_1764670873376.png";
-import img31 from "@assets/31_1764670873376.png";
+import img22 from "@assets/23_1764670873372.png";
+import img23 from "@assets/24_1764670873373.png";
+import img24 from "@assets/25_1764670873373.png";
+import img25 from "@assets/26_1764670873374.png";
+import img26 from "@assets/27_1764670873374.png";
+import img27 from "@assets/28_1764670873375.png";
+import img28 from "@assets/29_1764670873375.png";
+import img29 from "@assets/30_1764670873376.png";
+import img30 from "@assets/31_1764670873376.png";
 
 interface Product {
   id: number;
@@ -71,16 +70,15 @@ const products: Product[] = [
   { id: 19, name: "Orange Energizer Spray", category: "Air Freshener", image: img19, description: "Energizing fresh scent." },
   { id: 20, name: "Green Apple Freshener", category: "Air Freshener", image: img20, description: "Fresh natural scent.", badge: "Popular" },
   { id: 21, name: "British Fragrances Green Apple Spray", category: "Air Freshener", image: img21, description: "Premium green apple fragrance freshener.", badge: "New" },
-  { id: 22, name: "Axkwek Knock Out All Insect Killer", category: "Insect Control", image: img22, description: "All-purpose heavy-duty insect killer.", badge: "Bestseller" },
-  { id: 23, name: "Relite Lighter Gas Cartridge", category: "Gas Products", image: img23, description: "High-purity butane for lighters.", badge: "Best Value" },
-  { id: 24, name: "MOI Air Freshener Collection", category: "Air Freshener", image: img24, description: "6 premium fragrance variants in one collection.", badge: "Popular" },
-  { id: 25, name: "ASJ Automatic Room Freshener Dispenser", category: "Air Freshener", image: img25, description: "Smart automatic spray dispenser system.", badge: "Popular" },
-  { id: 26, name: "ASJ Lemon Air Freshener Spray", category: "Air Freshener", image: img26, description: "Refreshing lemon-scented room spray." },
-  { id: 27, name: "Weldmart Extra Lubricant Spray", category: "Industrial", image: img27, description: "33% extra multi-purpose lubrication." },
-  { id: 28, name: "Phoenix Odone Odor Eliminator", category: "Air Freshener", image: img28, description: "Professional odor elimination formula." },
-  { id: 29, name: "Mosquito Repellent Skin Vape Lotion", category: "Pet Care", image: img29, description: "Safe skin-applied mosquito protection.", badge: "Vet Approved" },
-  { id: 30, name: "Umm Butane Refrigerant Gas", category: "Gas Products", image: img30, description: "Premium refrigerant butane gas cartridge." },
-  { id: 31, name: "PCI Pest Seal Cockroach Killer", category: "Insect Control", image: img31, description: "Advanced cockroach control spray with seal." },
+  { id: 22, name: "Relite Lighter Gas Cartridge", category: "Gas Products", image: img22, description: "High-purity butane for lighters.", badge: "Best Value" },
+  { id: 23, name: "MOI Air Freshener Collection", category: "Air Freshener", image: img23, description: "6 premium fragrance variants in one collection.", badge: "Popular" },
+  { id: 24, name: "ASJ Automatic Room Freshener Dispenser", category: "Air Freshener", image: img24, description: "Smart automatic spray dispenser system.", badge: "Popular" },
+  { id: 25, name: "ASJ Lemon Air Freshener Spray", category: "Air Freshener", image: img25, description: "Refreshing lemon-scented room spray." },
+  { id: 26, name: "Weldmart Extra Lubricant Spray", category: "Industrial", image: img26, description: "33% extra multi-purpose lubrication." },
+  { id: 27, name: "Phoenix Odone Odor Eliminator", category: "Air Freshener", image: img27, description: "Professional odor elimination formula." },
+  { id: 28, name: "Mosquito Repellent Skin Vape Lotion", category: "Pet Care", image: img28, description: "Safe skin-applied mosquito protection.", badge: "Vet Approved" },
+  { id: 29, name: "Umm Butane Refrigerant Gas", category: "Gas Products", image: img29, description: "Premium refrigerant butane gas cartridge." },
+  { id: 30, name: "PCI Pest Seal Cockroach Killer", category: "Insect Control", image: img30, description: "Advanced cockroach control spray with seal." },
 ];
 
 export function Products() {
