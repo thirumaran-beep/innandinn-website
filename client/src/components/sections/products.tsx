@@ -28,7 +28,7 @@ import img17 from "@assets/17_1764659739450.png";
 import img18 from "@assets/18_1764659739450.png";
 import img19 from "@assets/19_1764659739450.png";
 import img20 from "@assets/20_1764659739451.png";
-import img21 from "@assets/21_1764670603769.png";
+import img21 from "@assets/21_1764667922969.png";
 import img22 from "@assets/22_1764670603774.png";
 import img23 from "@assets/23_1764670603769.png";
 import img24 from "@assets/24_1764670603770.png";
