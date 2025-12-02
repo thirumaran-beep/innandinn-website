@@ -190,25 +190,23 @@ export function Products() {
                 
                 {/* ZOOM CONTAINER - RESPONSIVE - FIXED */}
                 <div 
-                  className="rounded-lg border-2 border-slate-300 mb-2 sm:mb-3 md:mb-4 w-full flex-1 min-h-[250px] sm:min-h-[350px] md:min-h-[600px] cursor-grab active:cursor-grabbing bg-white flex items-center justify-center transition-all duration-300 hover:border-primary overflow-visible relative"
+                  className="rounded-lg border-2 border-slate-300 mb-2 sm:mb-3 md:mb-4 w-full flex-1 min-h-[280px] sm:min-h-[380px] md:min-h-[680px] cursor-grab active:cursor-grabbing bg-white flex items-center justify-center transition-all duration-300 hover:border-primary relative"
                   onWheel={handleMouseWheel}
                   onMouseMove={handleMouseMove}
                   onMouseDown={() => setIsDragging(true)}
                   onMouseUp={() => setIsDragging(false)}
                   onMouseLeave={() => setIsDragging(false)}
                 >
-                  <div className="absolute inset-0 flex items-center justify-center overflow-hidden rounded-lg">
-                    <img 
-                      src={selectedProduct.image} 
-                      alt={selectedProduct.name} 
-                      className="h-full w-auto max-w-[95%] object-contain transition-all duration-150"
-                      style={{ 
-                        transform: `scale(${zoom}) translate(${isDragging ? imagePosition.x : 0}%, ${isDragging ? imagePosition.y : 0}%)`,
-                        imageRendering: "crisp-edges",
-                        filter: "contrast(1.05) brightness(1.02)"
-                      }}
-                    />
-                  </div>
+                  <img 
+                    src={selectedProduct.image} 
+                    alt={selectedProduct.name} 
+                    className="max-h-[270px] sm:max-h-[370px] md:max-h-[1080px] w-auto transition-all duration-150 object-contain"
+                    style={{ 
+                      transform: `scale(${zoom}) translate(${isDragging ? imagePosition.x : 0}%, ${isDragging ? imagePosition.y : 0}%)`,
+                      imageRendering: "crisp-edges",
+                      filter: "contrast(1.05) brightness(1.02)"
+                    }}
+                  />
                 </div>
                 
                 <p className="text-xs sm:text-sm text-slate-600 mb-2 sm:mb-3 md:mb-4 text-center">Scroll • Drag • Zoom</p>

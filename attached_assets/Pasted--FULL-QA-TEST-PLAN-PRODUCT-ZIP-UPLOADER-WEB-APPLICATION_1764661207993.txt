@@ -1,0 +1,77 @@
+✅ FULL QA TEST PLAN — PRODUCT ZIP UPLOADER WEB APPLICATION
+1. Functional Test Cases
+TC No	Test Case	Steps	Expected Result
+F-01	Upload valid ZIP file	Select valid .zip → Click Upload	Upload succeeds; success message shown
+F-02	Upload invalid file type	Select .jpg, .pdf, .exe, etc.	Error: “Only ZIP files allowed”
+F-03	Upload empty ZIP file	Upload 0 KB file	Error message “File is empty or invalid”
+F-04	Upload large ZIP (max limit)	Upload ZIP close to max size	Upload succeeds without timeout
+F-05	Exceed max size	Upload ZIP > max limit	Clear error: “File too large”
+F-06	Cancel upload mid-way	Start upload → Cancel	Upload stops; no partial data saved
+F-07	Duplicate product inside ZIP	Upload ZIP with same product ID	Show duplicate warning or skip logic
+F-08	Server validation	Bypass UI & POST invalid payload	Server rejects invalid request
+F-09	Successful metadata extraction	Upload ZIP with valid product data	All product info displays correctly
+F-10	Upload with missing fields	ZIP missing required product fields	Error message for missing fields
+2. UI / UX Test Cases
+TC No	Test Case	Steps	Expected Result
+UX-01	Upload button visible	Load page	Upload area clearly visible
+UX-02	Drag & Drop support	Drag ZIP into upload area	File attaches successfully
+UX-03	Progress bar	Upload large file	Progress bar updates smoothly
+UX-04	Success message UI	Upload a valid ZIP	“Upload successful” visible + styled
+UX-05	Error message clarity	Upload invalid ZIP	Error text is readable + human friendly
+UX-06	Mobile usability	Test on phone	Layout responsive, buttons not overlapping
+UX-07	Loading indicators	During upload	Spinner/progress shown
+3. Compatibility Test Cases
+TC No	Test Case	Browser/Device	Expected Result
+C-01	Chrome latest	Desktop	Works perfectly
+C-02	Firefox latest	Desktop	Works perfectly
+C-03	Safari	iPhone	Works perfectly
+C-04	Edge	Desktop	Works perfectly
+C-05	Android Chrome	Android Phone	Upload works without UI break
+C-06	Slow network (3G)	Throttled	Upload should NOT freeze
+4. Performance Test Cases
+TC No	Test Case	Steps	Expected Result
+P-01	Upload 50MB ZIP	Start upload	Upload within acceptable time
+P-02	Upload many files inside ZIP	500+ product entries	System processes all without crashing
+P-03	Concurrent uploads	20 users upload simultaneously	No server crash; minimal slow-down
+P-04	Stress test	Upload extremely large file	Graceful failure; server stable
+P-05	Memory leak test	Monitor app while uploading repeatedly	No memory spikes or crashes
+5. Security Test Cases
+TC No	Test Case	Attack Type	Expected Result
+S-01	Upload executable disguised as ZIP	Malware attempt	Reject file
+S-02	Upload ZIP containing scripts	malicious.js	Reject & sanitize
+S-03	SQL Injection in product fields	' OR 1=1 --	Should be sanitized
+S-04	XSS attack in product description	<script>alert(1)</script>	Must be escaped safely
+S-05	Unauthorized access	Open upload URL without login (if required)	Redirect to login / deny
+S-06	CSRF protection	Send forged upload request	Upload must FAIL
+S-07	Path traversal	ZIP contains ../../etc/passwd	Reject ZIP structure
+6. Data Integrity Test Cases
+TC No	Test Case	Steps	Expected Result
+D-01	Verify saved product	Upload → check DB	Data matches exactly
+D-02	Corrupt ZIP	Upload purposely corrupted file	Should detect and reject
+D-03	Special characters	Product name includes emojis, unicode	Data saved correctly
+D-04	Very long text	Product description 10,000 chars	App must not break
+D-05	Verify duplicates	Upload same product twice	Correct duplicate handling
+D-06	Check wrong mapping	Name, price swapped in UI	All fields mapped correctly
+⭐ SUMMARY OF WHAT TO FIX (High-priority)
+
+If any of these fail, they must be fixed immediately:
+
+🔥 1. Missing server-side validation
+
+Most apps only do client-side — dangerous and insecure.
+
+🔥 2. Weak error handling
+
+Blank page / no progress bar = BAD UX.
+
+🔥 3. Security vulnerabilities in ZIP uploads
+
+ZIP uploads are high-risk if not sanitized.
+
+🔥 4. Mobile version broken
+
+Many people upload from phone — must work.
+
+🔥 5. No duplicate or corruption checks
+
+Can lead to broken database entries.
