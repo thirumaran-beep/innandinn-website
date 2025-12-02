@@ -101,9 +101,6 @@ export function Footer() {
                     <p className="text-sm text-white/70"><strong>R Bala (GM):</strong> +91 92620 80311</p>
                   </div>
                 </div>
-                <div className="mt-4 pt-4 border-t border-white/10">
-                  <p className="text-xs text-white/40">GST: <span className="text-white/60 font-mono">34AABCI0658L1ZJ</span></p>
-                </div>
               </div>
             </div>
           </div>

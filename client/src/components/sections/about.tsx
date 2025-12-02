@@ -21,7 +21,7 @@ export function About() {
                 Under the visionary leadership of our Managing Director, we have scaled to a robust workforce of over 50 skilled professionals and an annual turnover between ₹5 Cr – ₹25 Cr. We don't just make products; we build brands.
               </p>
               <p>
-                Located at Reddiyar Street, Sooramangalam, our factory is a hub of efficiency and compliance. We are fully registered under GST (34AABCI0658L1ZJ) and hold IEC Code 0494004941, ensuring complete transparency and regulatory adherence for all our partners.
+                Located at Reddiyar Street, Sooramangalam, our factory is a hub of efficiency and compliance. We are fully registered and certified, ensuring complete transparency and regulatory adherence for all our partners.
               </p>
             </div>
 
