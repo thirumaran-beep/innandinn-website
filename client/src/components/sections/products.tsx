@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, ShoppingCart, Eye, ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
+import { ArrowRight, ShoppingCart, Eye, ZoomIn, ZoomOut, RotateCcw, ChevronUp, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 
-// Import all product images - NEW HIGH QUALITY IMAGES
+// Import all product images
 import img1 from "@assets/1_1764659739441.png";
 import img2 from "@assets/2_1764659739442.png";
 import img3 from "@assets/3_1764659739443.png";
@@ -70,17 +70,11 @@ export function Products() {
   const { toast } = useToast();
 
   const categories = ["All", ...Array.from(new Set(products.map(p => p.category)))];
-  
-  const filteredProducts = activeCategory === "All" 
-    ? products 
-    : products.filter(p => p.category === activeCategory);
+  const filteredProducts = activeCategory === "All" ? products : products.filter(p => p.category === activeCategory);
 
   const handleEnquiry = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Enquiry Sent!",
-      description: `Request received for ${selectedProduct?.name}. Our team will contact you shortly.`,
-    });
+    toast({ title: "Enquiry Sent!", description: `Request received for ${selectedProduct?.name}. Our team will contact you shortly.` });
     setSelectedProduct(null);
     setZoom(1);
     setImagePosition({ x: 0, y: 0 });
@@ -89,22 +83,21 @@ export function Products() {
   const handleMouseWheel = (e: React.WheelEvent) => {
     e.preventDefault();
     const delta = e.deltaY > 0 ? -0.1 : 0.1;
-    const newZoom = Math.max(0.5, Math.min(3, zoom + delta));
-    setZoom(newZoom);
+    setZoom(Math.max(0.5, Math.min(3, zoom + delta)));
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!isDragging || zoom <= 1) return;
-    
     const container = e.currentTarget;
     const rect = container.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width) * 100;
     const y = ((e.clientY - rect.top) / rect.height) * 100;
-    
-    setImagePosition({
-      x: Math.max(-50, Math.min(50, x - 50)),
-      y: Math.max(-50, Math.min(50, y - 50)),
-    });
+    setImagePosition({ x: Math.max(-50, Math.min(50, x - 50)), y: Math.max(-50, Math.min(50, y - 50)) });
+  };
+
+  const handleZoom = (direction: 'in' | 'out') => {
+    const newZoom = direction === 'in' ? Math.min(3, zoom + 0.2) : Math.max(0.5, zoom - 0.2);
+    setZoom(newZoom);
   };
 
   return (
@@ -115,17 +108,15 @@ export function Products() {
             <span className="text-accent font-bold uppercase tracking-widest text-sm mb-2 block">Our Services</span>
             <h2 className="text-4xl font-heading font-bold text-foreground">Manufacturing & Services</h2>
           </div>
-          
-          {/* Category Filter */}
           <div className="flex flex-wrap gap-2">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 className={cn(
-                  "px-4 py-2 rounded-full text-sm font-bold transition-all duration-300 border",
+                  "px-4 py-2 rounded-full text-sm font-bold transition-all duration-300 border hover:scale-105 active:scale-95",
                   activeCategory === cat
-                    ? "bg-primary text-white border-primary shadow-md scale-105"
+                    ? "bg-primary text-white border-primary shadow-lg scale-105"
                     : "bg-white text-slate-600 border-slate-200 hover:border-primary hover:text-primary"
                 )}
               >
@@ -139,29 +130,25 @@ export function Products() {
           {filteredProducts.map((product, index) => (
             <div 
               key={product.id}
-              className="group bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 animate-in fade-in zoom-in-95 fill-mode-both"
+              className="group bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 animate-in fade-in zoom-in-95 fill-mode-both cursor-pointer active:scale-95"
               style={{ animationDelay: `${index * 50}ms` }}
             >
-              {/* Image Area */}
-              <div className="relative h-64 p-6 bg-white flex items-center justify-center overflow-hidden">
+              <div className="relative h-48 sm:h-56 md:h-64 p-4 sm:p-6 bg-white flex items-center justify-center overflow-hidden">
                 {product.badge && (
-                  <span className="absolute top-3 right-3 bg-accent text-white text-xs font-bold px-2 py-1 rounded shadow-sm z-10">
+                  <span className="absolute top-3 right-3 bg-accent text-white text-xs font-bold px-2 py-1 rounded shadow-sm z-10 animate-pulse">
                     {product.badge}
                   </span>
                 )}
-                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors duration-300" />
                 <img 
                   src={product.image} 
                   alt={product.name}
                   className="h-full w-auto object-contain drop-shadow-lg transform group-hover:scale-110 transition-transform duration-500"
                   style={{ imageRendering: "crisp-edges" }}
                 />
-                
-                {/* Quick Action Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-[2px]">
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-[2px]">
                   <Button 
                     size="sm" 
-                    className="bg-white text-primary hover:bg-primary hover:text-white font-bold rounded-full"
+                    className="bg-white text-primary hover:bg-primary hover:text-white font-bold rounded-full animate-bounce"
                     onClick={() => { setSelectedProduct(product); setZoom(1); setImagePosition({ x: 0, y: 0 }); }}
                   >
                     <Eye className="h-4 w-4 mr-2" /> View
@@ -169,24 +156,18 @@ export function Products() {
                 </div>
               </div>
 
-              {/* Content Area */}
-              <div className="p-5">
+              <div className="p-4 sm:p-5">
                 <div className="text-xs font-bold text-primary/60 uppercase tracking-wider mb-1">{product.category}</div>
-                <h3 className="font-heading font-bold text-lg text-foreground mb-2 group-hover:text-primary transition-colors truncate">{product.name}</h3>
-                <p className="text-slate-500 text-sm line-clamp-2 mb-4 min-h-[40px]">
-                  {product.description}
-                </p>
-                
+                <h3 className="font-heading font-bold text-base sm:text-lg text-foreground mb-2 group-hover:text-primary transition-colors truncate">{product.name}</h3>
+                <p className="text-slate-500 text-xs sm:text-sm line-clamp-2 mb-4 min-h-[40px]">{product.description}</p>
                 <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
-                  <span className="font-bold text-lg text-slate-700">
-                    Bulk Quote
-                  </span>
+                  <span className="font-bold text-base sm:text-lg text-slate-700">Bulk Quote</span>
                   <Button 
                     size="sm" 
-                    className="rounded-full bg-slate-900 hover:bg-accent transition-colors duration-300"
+                    className="rounded-full bg-slate-900 hover:bg-accent transition-all duration-300 text-xs sm:text-sm"
                     onClick={() => { setSelectedProduct(product); setZoom(1); setImagePosition({ x: 0, y: 0 }); }}
                   >
-                    <ShoppingCart className="h-4 w-4 mr-2" />
+                    <ShoppingCart className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
                     Enquire
                   </Button>
                 </div>
@@ -196,19 +177,20 @@ export function Products() {
         </div>
       </div>
 
-      {/* Product Detail / Enquiry Modal with Advanced Zoom */}
+      {/* RESPONSIVE MODAL */}
       <Dialog open={!!selectedProduct} onOpenChange={(open) => { if (!open) { setSelectedProduct(null); setZoom(1); setImagePosition({ x: 0, y: 0 }); }}}>
-        <DialogContent className="sm:max-w-[1100px] p-0 overflow-hidden bg-white max-h-[90vh]">
+        <DialogContent className="w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-[1100px] p-0 overflow-hidden bg-white max-h-[95vh] rounded-lg">
           {selectedProduct && (
             <div className="flex flex-col md:flex-row h-full gap-0">
-              <div className="w-full md:w-3/5 bg-white p-6 flex flex-col items-center justify-center relative min-h-[600px] border-r border-slate-200">
-                <div className="absolute top-4 left-4 text-xs font-bold text-slate-600 uppercase tracking-widest">
+              {/* IMAGE SECTION - RESPONSIVE */}
+              <div className="w-full md:w-3/5 bg-white p-3 sm:p-4 md:p-6 flex flex-col items-center justify-center relative min-h-[300px] sm:min-h-[400px] md:min-h-[600px] border-b md:border-b-0 md:border-r border-slate-200">
+                <div className="absolute top-2 sm:top-4 left-2 sm:left-4 text-xs font-bold text-slate-600 uppercase tracking-widest">
                   {selectedProduct.category}
                 </div>
                 
-                {/* Zoom Image Container - Large Frame */}
+                {/* ZOOM CONTAINER - RESPONSIVE */}
                 <div 
-                  className="overflow-hidden rounded-lg border-2 border-slate-300 mb-4 w-full h-[900px] cursor-grab active:cursor-grabbing bg-white flex items-center justify-center"
+                  className="overflow-hidden rounded-lg border-2 border-slate-300 mb-2 sm:mb-3 md:mb-4 w-full h-[200px] sm:h-[350px] md:h-[900px] cursor-grab active:cursor-grabbing bg-white flex items-center justify-center transition-all duration-300 hover:border-primary"
                   onWheel={handleMouseWheel}
                   onMouseMove={handleMouseMove}
                   onMouseDown={() => setIsDragging(true)}
@@ -218,7 +200,7 @@ export function Products() {
                   <img 
                     src={selectedProduct.image} 
                     alt={selectedProduct.name} 
-                    className="max-h-[1040px] w-auto object-contain transition-transform duration-150"
+                    className="max-h-[190px] sm:max-h-[340px] md:max-h-[1040px] w-auto object-contain transition-all duration-150"
                     style={{ 
                       transform: `scale(${zoom}) translate(${isDragging ? imagePosition.x : 0}%, ${isDragging ? imagePosition.y : 0}%)`,
                       imageRendering: "crisp-edges",
@@ -227,67 +209,73 @@ export function Products() {
                   />
                 </div>
                 
-                <p className="text-xs text-slate-600 mb-4 text-center">Scroll or drag to zoom • Use mouse wheel</p>
+                <p className="text-xs sm:text-sm text-slate-600 mb-2 sm:mb-3 md:mb-4 text-center">Scroll • Drag • Zoom</p>
                 
-                {/* Zoom Controls */}
-                <div className="flex gap-2 flex-wrap justify-center">
+                {/* ZOOM CONTROLS - RESPONSIVE */}
+                <div className="flex gap-1 sm:gap-2 flex-wrap justify-center w-full">
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => setZoom(Math.max(0.5, zoom - 0.2))}
-                    className="gap-2"
+                    onClick={() => handleZoom('out')}
+                    className="gap-1 bg-slate-100 text-slate-900 border-slate-300 hover:bg-slate-200 text-xs sm:text-sm"
                   >
-                    <ZoomOut className="h-4 w-4" /> Out
+                    <ZoomOut className="h-3 w-3 sm:h-4 sm:w-4" /> 
+                    <span className="hidden sm:inline">Out</span>
                   </Button>
-                  <span className="px-3 py-2 text-sm font-bold bg-slate-100 rounded border border-slate-200">{Math.round(zoom * 100)}%</span>
+                  <span className="px-2 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm font-bold bg-slate-200 text-slate-900 rounded border border-slate-300 min-w-[60px] sm:min-w-[80px] text-center">
+                    {Math.round(zoom * 100)}%
+                  </span>
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => setZoom(Math.min(3, zoom + 0.2))}
-                    className="gap-2"
+                    onClick={() => handleZoom('in')}
+                    className="gap-1 bg-slate-100 text-slate-900 border-slate-300 hover:bg-slate-200 text-xs sm:text-sm"
                   >
-                    <ZoomIn className="h-4 w-4" /> In
+                    <ZoomIn className="h-3 w-3 sm:h-4 sm:w-4" />
+                    <span className="hidden sm:inline">In</span>
                   </Button>
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={() => { setZoom(1); setImagePosition({ x: 0, y: 0 }); }}
-                    className="gap-2"
+                    className="gap-1 bg-slate-100 text-slate-900 border-slate-300 hover:bg-slate-200 text-xs sm:text-sm"
                   >
-                    <RotateCcw className="h-4 w-4" /> Reset
+                    <RotateCcw className="h-3 w-3 sm:h-4 sm:w-4" />
+                    <span className="hidden sm:inline">Reset</span>
                   </Button>
                 </div>
               </div>
               
-              <div className="w-full md:w-2/5 p-8 flex flex-col overflow-y-auto max-h-[600px]">
-                <DialogHeader className="mb-6">
-                  <DialogTitle className="text-2xl font-heading font-bold text-foreground mb-2">
+              {/* FORM SECTION - RESPONSIVE */}
+              <div className="w-full md:w-2/5 p-3 sm:p-5 md:p-8 flex flex-col overflow-y-auto max-h-[calc(95vh-80px)] sm:max-h-[calc(95vh-100px)] md:max-h-[600px]">
+                <DialogHeader className="mb-4 sm:mb-6">
+                  <DialogTitle className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-2">
                     {selectedProduct.name}
                   </DialogTitle>
-                  <DialogDescription className="text-base text-slate-600">
+                  <DialogDescription className="text-xs sm:text-base text-slate-600">
                     {selectedProduct.description}
                   </DialogDescription>
                 </DialogHeader>
 
-                <div className="space-y-4 flex-grow">
-                  <div className="bg-blue-50 p-3 rounded border border-blue-100 text-sm text-blue-800">
+                <div className="space-y-3 sm:space-y-4 flex-grow">
+                  <div className="bg-blue-50 p-2 sm:p-3 rounded border border-blue-100 text-xs sm:text-sm text-blue-800">
                     <strong>Request Bulk Quote</strong> for competitive pricing on large orders.
                   </div>
                   
-                  <form id="enquiry-form" onSubmit={handleEnquiry} className="space-y-3 mt-4">
-                    <Label htmlFor="email">Your Email</Label>
-                    <Input id="email" type="email" placeholder="Enter your email" required />
+                  <form id="enquiry-form" onSubmit={handleEnquiry} className="space-y-2 sm:space-y-3 mt-3 sm:mt-4">
+                    <Label htmlFor="email" className="text-xs sm:text-sm">Your Email</Label>
+                    <Input id="email" type="email" placeholder="Enter your email" required className="text-xs sm:text-sm h-8 sm:h-10" />
                     
-                    <Label htmlFor="phone">Phone Number</Label>
-                    <Input id="phone" type="tel" placeholder="+91 98765 43210" required />
+                    <Label htmlFor="phone" className="text-xs sm:text-sm">Phone Number</Label>
+                    <Input id="phone" type="tel" placeholder="+91 98765 43210" required className="text-xs sm:text-sm h-8 sm:h-10" />
                     
-                    <Label htmlFor="quantity">Estimated Quantity (Units)</Label>
-                    <Input id="quantity" type="number" placeholder="e.g. 500, 1000" />
+                    <Label htmlFor="quantity" className="text-xs sm:text-sm">Estimated Quantity (Units)</Label>
+                    <Input id="quantity" type="number" placeholder="e.g. 500, 1000" className="text-xs sm:text-sm h-8 sm:h-10" />
                   </form>
                 </div>
 
-                <DialogFooter className="mt-8 pt-4 border-t border-slate-100">
-                  <Button type="submit" form="enquiry-form" className="w-full bg-primary hover:bg-primary/90 text-lg font-heading h-12">
+                <DialogFooter className="mt-6 sm:mt-8 pt-3 sm:pt-4 border-t border-slate-100">
+                  <Button type="submit" form="enquiry-form" className="w-full bg-primary hover:bg-primary/90 text-sm sm:text-lg font-heading h-10 sm:h-12 transition-all hover:shadow-lg active:scale-95">
                     Get Bulk Quote
                   </Button>
                 </DialogFooter>
