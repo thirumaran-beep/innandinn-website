@@ -39,14 +39,9 @@ export function Navbar() {
             alt="Innovative & Innovators - Aerosol Manufacturing" 
             className="h-16 w-auto object-contain" 
           />
-          <div className="flex flex-col">
-            <span className={cn("font-heading font-bold text-sm leading-none tracking-tight text-primary")}>
-              INNOVATIVE & INNOVATORS
-            </span>
-            <span className={cn("font-heading font-bold text-xs leading-none tracking-widest text-primary")}>
-              PVT LTD
-            </span>
-          </div>
+          <span className={cn("font-heading font-bold text-sm leading-none tracking-tight text-primary")}>
+            INNOVATIVE & INNOVATORS PVT LTD
+          </span>
         </Link>
 
         {/* Desktop Nav */}
