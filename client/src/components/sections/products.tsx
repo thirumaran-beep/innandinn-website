@@ -7,27 +7,27 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 
-// Import all product images - new high-quality versions
-import img1 from "@assets/product-insect-killer.png";
-import img2 from "@assets/product-insect-killer-2.png";
-import img3 from "@assets/product-insect-killer-3.png";
-import img4 from "@assets/product-rust-spray.png";
-import img5 from "@assets/5_1764224991655.png";
-import img6 from "@assets/product-pet-spray.png";
-import img7 from "@assets/7_1764224991656.png";
-import img8 from "@assets/8_1764224991657.png";
-import img9 from "@assets/9_1764224991657.png";
-import img10 from "@assets/10_1764224991658.png";
-import img11 from "@assets/11_1764224991659.png";
-import img12 from "@assets/12_1764224991659.png";
-import img13 from "@assets/13_1764224991660.png";
-import img14 from "@assets/14_1764224991660.png";
-import img15 from "@assets/15_1764224991661.png";
-import img16 from "@assets/product-air-freshener.png";
-import img17 from "@assets/17_1764224991662.png";
-import img18 from "@assets/18_1764224991662.png";
-import img19 from "@assets/19_1764224991663.png";
-import img20 from "@assets/20_1764224991664.png";
+// Import all product images - NEW HIGH QUALITY IMAGES
+import img1 from "@assets/1_1764659739441.png";
+import img2 from "@assets/2_1764659739442.png";
+import img3 from "@assets/3_1764659739443.png";
+import img4 from "@assets/4_1764659739443.png";
+import img5 from "@assets/5_1764659739444.png";
+import img6 from "@assets/6_1764659739445.png";
+import img7 from "@assets/7_1764659739446.png";
+import img8 from "@assets/8_1764659739446.png";
+import img9 from "@assets/9_1764659739447.png";
+import img10 from "@assets/10_1764659739447.png";
+import img11 from "@assets/11_1764659739447.png";
+import img12 from "@assets/12_1764659739448.png";
+import img13 from "@assets/13_1764659739448.png";
+import img14 from "@assets/14_1764659739449.png";
+import img15 from "@assets/15_1764659739449.png";
+import img16 from "@assets/16_1764659739449.png";
+import img17 from "@assets/17_1764659739450.png";
+import img18 from "@assets/18_1764659739450.png";
+import img19 from "@assets/19_1764659739450.png";
+import img20 from "@assets/20_1764659739451.png";
 
 interface Product {
   id: number;
@@ -42,23 +42,23 @@ const products: Product[] = [
   { id: 1, name: "Multi-Insect Killer Spray", category: "Insect Control", image: img1, description: "Professional-grade insect control solution.", badge: "Bestseller" },
   { id: 2, name: "Advanced Pest Formula", category: "Insect Control", image: img2, description: "Heavy-duty pest elimination." },
   { id: 3, name: "Lemon Scent Insect Spray", category: "Insect Control", image: img3, description: "Fresh fragrance pest control.", badge: "New" },
-  { id: 7, name: "Promotional Insect Pack", category: "Insect Control", image: img7, description: "Bulk-friendly insect spray.", badge: "Sale" },
+  { id: 4, name: "Industrial Rust Release Spray", category: "Industrial", image: img4, description: "Professional metal protection." },
   { id: 5, name: "Cockroach Elimination Spray", category: "Insect Control", image: img5, description: "Specialized cockroach control." },
+  { id: 6, name: "Pet Care Treatment", category: "Pet Care", image: img6, description: "Vet-approved pet protection.", badge: "Vet Approved" },
+  { id: 7, name: "Promotional Insect Pack", category: "Insect Control", image: img7, description: "Bulk-friendly insect spray.", badge: "Sale" },
   { id: 8, name: "Universal Pest Spray", category: "Insect Control", image: img8, description: "Multi-purpose pest solution." },
   { id: 9, name: "Mosquito Protection Spray", category: "Insect Control", image: img9, description: "Dengue protection spray." },
   { id: 10, name: "Extra Strong Formula", category: "Insect Control", image: img10, description: "Industrial-strength solution." },
   { id: 11, name: "Flash Action Mosquito Spray", category: "Insect Control", image: img11, description: "Instant mosquito elimination." },
   { id: 12, name: "Eco-Friendly Insect Killer", category: "Insect Control", image: img12, description: "Safe, natural formulation.", badge: "Eco-Friendly" },
+  { id: 13, name: "Compact Rust Spray", category: "Industrial", image: img13, description: "Portable rust solution." },
   { id: 14, name: "Automatic Mosquito Refill", category: "Insect Control", image: img14, description: "Continuous protection system." },
   { id: 15, name: "Total Home Protection Spray", category: "Insect Control", image: img15, description: "Complete insect defense." },
   { id: 16, name: "Premium Room Freshener", category: "Air Freshener", image: img16, description: "Long-lasting fragrance solution.", badge: "Popular" },
   { id: 17, name: "Classic Air Freshener", category: "Air Freshener", image: img17, description: "Professional odor elimination." },
-  { id: 18, name: "Floral Scent Freshener", category: "Air Freshener", image: img18, description: "Premium floral atmosphere." },
-  { id: 19, name: "Lavender Room Spray", category: "Air Freshener", image: img19, description: "Relaxing ambiance creation." },
-  { id: 20, name: "Orange Energizer Spray", category: "Air Freshener", image: img20, description: "Energizing fresh scent." },
-  { id: 4, name: "Industrial Rust Release Spray", category: "Industrial", image: img4, description: "Professional metal protection." },
-  { id: 13, name: "Compact Rust Spray", category: "Industrial", image: img13, description: "Portable rust solution." },
-  { id: 6, name: "Pet Care Treatment", category: "Pet Care", image: img6, description: "Vet-approved pet protection.", badge: "Vet Approved" },
+  { id: 18, name: "Lavender Room Spray", category: "Air Freshener", image: img18, description: "Relaxing ambiance creation." },
+  { id: 19, name: "Orange Energizer Spray", category: "Air Freshener", image: img19, description: "Energizing fresh scent." },
+  { id: 20, name: "Green Apple Freshener", category: "Air Freshener", image: img20, description: "Fresh natural scent." },
 ];
 
 export function Products() {
@@ -143,7 +143,7 @@ export function Products() {
               style={{ animationDelay: `${index * 50}ms` }}
             >
               {/* Image Area */}
-              <div className="relative h-64 p-6 bg-white flex items-center justify-center overflow-hidden">
+              <div className="relative h-64 p-6 bg-black flex items-center justify-center overflow-hidden">
                 {product.badge && (
                   <span className="absolute top-3 right-3 bg-accent text-white text-xs font-bold px-2 py-1 rounded shadow-sm z-10">
                     {product.badge}
@@ -153,12 +153,12 @@ export function Products() {
                 <img 
                   src={product.image} 
                   alt={product.name}
-                  className="h-full w-auto object-contain drop-shadow-md transform group-hover:scale-110 transition-transform duration-500"
+                  className="h-full w-auto object-contain drop-shadow-lg transform group-hover:scale-110 transition-transform duration-500"
                   style={{ imageRendering: "crisp-edges" }}
                 />
                 
                 {/* Quick Action Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20 backdrop-blur-[2px]">
+                <div className="absolute inset-0 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-[2px]">
                   <Button 
                     size="sm" 
                     className="bg-white text-primary hover:bg-primary hover:text-white font-bold rounded-full"
@@ -201,14 +201,14 @@ export function Products() {
         <DialogContent className="sm:max-w-[1100px] p-0 overflow-hidden bg-white max-h-[90vh]">
           {selectedProduct && (
             <div className="flex flex-col md:flex-row h-full gap-0">
-              <div className="w-full md:w-3/5 bg-white p-6 flex flex-col items-center justify-center relative min-h-[600px] border-r border-slate-200">
+              <div className="w-full md:w-3/5 bg-black p-6 flex flex-col items-center justify-center relative min-h-[600px] border-r border-slate-200">
                 <div className="absolute top-4 left-4 text-xs font-bold text-slate-400 uppercase tracking-widest">
                   {selectedProduct.category}
                 </div>
                 
                 {/* Zoom Image Container - Large Frame */}
                 <div 
-                  className="overflow-hidden rounded-lg border-2 border-slate-200 mb-4 w-full h-[550px] cursor-grab active:cursor-grabbing bg-slate-50 flex items-center justify-center"
+                  className="overflow-hidden rounded-lg border-2 border-slate-300 mb-4 w-full h-[550px] cursor-grab active:cursor-grabbing bg-black flex items-center justify-center"
                   onWheel={handleMouseWheel}
                   onMouseMove={handleMouseMove}
                   onMouseDown={() => setIsDragging(true)}
@@ -227,7 +227,7 @@ export function Products() {
                   />
                 </div>
                 
-                <p className="text-xs text-slate-500 mb-4 text-center">Scroll or drag to zoom • Use mouse wheel</p>
+                <p className="text-xs text-slate-400 mb-4 text-center">Scroll or drag to zoom • Use mouse wheel</p>
                 
                 {/* Zoom Controls */}
                 <div className="flex gap-2 flex-wrap justify-center">
