@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, ShoppingCart, Eye, ZoomIn, ZoomOut } from "lucide-react";
+import { ArrowRight, ShoppingCart, Eye, ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 
-// Import all product images
+// Import all product images - new high-quality versions
 import img1 from "@assets/product-insect-killer.png";
 import img2 from "@assets/product-insect-killer-2.png";
 import img3 from "@assets/product-insect-killer-3.png";
@@ -65,6 +65,8 @@ export function Products() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [zoom, setZoom] = useState(1);
+  const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
   const { toast } = useToast();
 
   const categories = ["All", ...Array.from(new Set(products.map(p => p.category)))];
@@ -81,6 +83,28 @@ export function Products() {
     });
     setSelectedProduct(null);
     setZoom(1);
+    setImagePosition({ x: 0, y: 0 });
+  };
+
+  const handleMouseWheel = (e: React.WheelEvent) => {
+    e.preventDefault();
+    const delta = e.deltaY > 0 ? -0.1 : 0.1;
+    const newZoom = Math.max(0.5, Math.min(3, zoom + delta));
+    setZoom(newZoom);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDragging || zoom <= 1) return;
+    
+    const container = e.currentTarget;
+    const rect = container.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    
+    setImagePosition({
+      x: Math.max(-50, Math.min(50, x - 50)),
+      y: Math.max(-50, Math.min(50, y - 50)),
+    });
   };
 
   return (
@@ -119,7 +143,7 @@ export function Products() {
               style={{ animationDelay: `${index * 50}ms` }}
             >
               {/* Image Area */}
-              <div className="relative h-64 p-6 bg-gradient-to-b from-white to-slate-50 flex items-center justify-center overflow-hidden">
+              <div className="relative h-64 p-6 bg-white flex items-center justify-center overflow-hidden">
                 {product.badge && (
                   <span className="absolute top-3 right-3 bg-accent text-white text-xs font-bold px-2 py-1 rounded shadow-sm z-10">
                     {product.badge}
@@ -130,6 +154,7 @@ export function Products() {
                   src={product.image} 
                   alt={product.name}
                   className="h-full w-auto object-contain drop-shadow-md transform group-hover:scale-110 transition-transform duration-500"
+                  style={{ imageRendering: "crisp-edges" }}
                 />
                 
                 {/* Quick Action Overlay */}
@@ -137,7 +162,7 @@ export function Products() {
                   <Button 
                     size="sm" 
                     className="bg-white text-primary hover:bg-primary hover:text-white font-bold rounded-full"
-                    onClick={() => { setSelectedProduct(product); setZoom(1); }}
+                    onClick={() => { setSelectedProduct(product); setZoom(1); setImagePosition({ x: 0, y: 0 }); }}
                   >
                     <Eye className="h-4 w-4 mr-2" /> View
                   </Button>
@@ -159,7 +184,7 @@ export function Products() {
                   <Button 
                     size="sm" 
                     className="rounded-full bg-slate-900 hover:bg-accent transition-colors duration-300"
-                    onClick={() => { setSelectedProduct(product); setZoom(1); }}
+                    onClick={() => { setSelectedProduct(product); setZoom(1); setImagePosition({ x: 0, y: 0 }); }}
                   >
                     <ShoppingCart className="h-4 w-4 mr-2" />
                     Enquire
@@ -171,44 +196,65 @@ export function Products() {
         </div>
       </div>
 
-      {/* Product Detail / Enquiry Modal with Zoom */}
-      <Dialog open={!!selectedProduct} onOpenChange={(open) => { if (!open) { setSelectedProduct(null); setZoom(1); }}}>
+      {/* Product Detail / Enquiry Modal with Advanced Zoom */}
+      <Dialog open={!!selectedProduct} onOpenChange={(open) => { if (!open) { setSelectedProduct(null); setZoom(1); setImagePosition({ x: 0, y: 0 }); }}}>
         <DialogContent className="sm:max-w-[900px] p-0 overflow-hidden bg-white">
           {selectedProduct && (
             <div className="flex flex-col md:flex-row h-full">
-              <div className="w-full md:w-1/2 bg-slate-50 p-8 flex flex-col items-center justify-center relative min-h-[400px]">
+              <div className="w-full md:w-1/2 bg-white p-8 flex flex-col items-center justify-center relative min-h-[400px] border-r border-slate-200">
                 <div className="absolute top-4 left-4 text-xs font-bold text-slate-400 uppercase tracking-widest">
                   {selectedProduct.category}
                 </div>
                 
-                {/* Zoom Image */}
-                <div className="overflow-hidden rounded-lg border border-slate-200 mb-4">
+                {/* Zoom Image Container */}
+                <div 
+                  className="overflow-hidden rounded-lg border-2 border-slate-200 mb-4 w-full max-h-[300px] cursor-grab active:cursor-grabbing bg-slate-50 flex items-center justify-center"
+                  onWheel={handleMouseWheel}
+                  onMouseMove={handleMouseMove}
+                  onMouseDown={() => setIsDragging(true)}
+                  onMouseUp={() => setIsDragging(false)}
+                  onMouseLeave={() => setIsDragging(false)}
+                >
                   <img 
                     src={selectedProduct.image} 
                     alt={selectedProduct.name} 
-                    className="max-h-[250px] w-auto object-contain transition-transform duration-300"
-                    style={{ transform: `scale(${zoom})` }}
+                    className="max-h-[280px] w-auto object-contain transition-transform duration-150"
+                    style={{ 
+                      transform: `scale(${zoom}) translate(${isDragging ? imagePosition.x : 0}%, ${isDragging ? imagePosition.y : 0}%)`,
+                      imageRendering: "crisp-edges",
+                      filter: "contrast(1.05) brightness(1.02)"
+                    }}
                   />
                 </div>
                 
+                <p className="text-xs text-slate-500 mb-4 text-center">Scroll or drag to zoom • Use mouse wheel</p>
+                
                 {/* Zoom Controls */}
-                <div className="flex gap-2 mb-6">
+                <div className="flex gap-2 flex-wrap justify-center">
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={() => setZoom(Math.max(0.5, zoom - 0.2))}
                     className="gap-2"
                   >
-                    <ZoomOut className="h-4 w-4" /> Zoom Out
+                    <ZoomOut className="h-4 w-4" /> Out
                   </Button>
-                  <span className="px-4 py-2 text-sm font-bold">{Math.round(zoom * 100)}%</span>
+                  <span className="px-3 py-2 text-sm font-bold bg-slate-100 rounded border border-slate-200">{Math.round(zoom * 100)}%</span>
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => setZoom(Math.min(2, zoom + 0.2))}
+                    onClick={() => setZoom(Math.min(3, zoom + 0.2))}
                     className="gap-2"
                   >
-                    <ZoomIn className="h-4 w-4" /> Zoom In
+                    <ZoomIn className="h-4 w-4" /> In
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => { setZoom(1); setImagePosition({ x: 0, y: 0 }); }}
+                    className="gap-2"
+                  >
+                    <RotateCcw className="h-4 w-4" /> Reset
                   </Button>
                 </div>
               </div>
