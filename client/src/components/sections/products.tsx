@@ -179,34 +179,36 @@ export function Products() {
 
       {/* RESPONSIVE MODAL */}
       <Dialog open={!!selectedProduct} onOpenChange={(open) => { if (!open) { setSelectedProduct(null); setZoom(1); setImagePosition({ x: 0, y: 0 }); }}}>
-        <DialogContent className="w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-[1100px] p-0 overflow-hidden bg-white max-h-[95vh] rounded-lg">
+        <DialogContent className="w-[95vw] sm:w-[90vw] md:max-w-[1200px] p-0 overflow-visible bg-white rounded-lg max-h-[95vh]">
           {selectedProduct && (
-            <div className="flex flex-col md:flex-row h-full gap-0">
+            <div className="flex flex-col md:flex-row w-full h-full overflow-hidden">
               {/* IMAGE SECTION - RESPONSIVE */}
-              <div className="w-full md:w-3/5 bg-white p-3 sm:p-4 md:p-6 flex flex-col items-center justify-center relative min-h-[300px] sm:min-h-[400px] md:min-h-[600px] border-b md:border-b-0 md:border-r border-slate-200">
-                <div className="absolute top-2 sm:top-4 left-2 sm:left-4 text-xs font-bold text-slate-600 uppercase tracking-widest">
+              <div className="w-full md:w-3/5 bg-white p-3 sm:p-4 md:p-6 flex flex-col items-center justify-center relative min-h-[350px] sm:min-h-[450px] md:min-h-[700px] border-b md:border-b-0 md:border-r border-slate-200 overflow-visible">
+                <div className="absolute top-2 sm:top-4 left-2 sm:left-4 text-xs font-bold text-slate-600 uppercase tracking-widest z-10">
                   {selectedProduct.category}
                 </div>
                 
-                {/* ZOOM CONTAINER - RESPONSIVE */}
+                {/* ZOOM CONTAINER - RESPONSIVE - FIXED */}
                 <div 
-                  className="overflow-hidden rounded-lg border-2 border-slate-300 mb-2 sm:mb-3 md:mb-4 w-full h-[200px] sm:h-[350px] md:h-[900px] cursor-grab active:cursor-grabbing bg-white flex items-center justify-center transition-all duration-300 hover:border-primary"
+                  className="rounded-lg border-2 border-slate-300 mb-2 sm:mb-3 md:mb-4 w-full flex-1 min-h-[250px] sm:min-h-[350px] md:min-h-[600px] cursor-grab active:cursor-grabbing bg-white flex items-center justify-center transition-all duration-300 hover:border-primary overflow-visible relative"
                   onWheel={handleMouseWheel}
                   onMouseMove={handleMouseMove}
                   onMouseDown={() => setIsDragging(true)}
                   onMouseUp={() => setIsDragging(false)}
                   onMouseLeave={() => setIsDragging(false)}
                 >
-                  <img 
-                    src={selectedProduct.image} 
-                    alt={selectedProduct.name} 
-                    className="max-h-[190px] sm:max-h-[340px] md:max-h-[1040px] w-auto object-contain transition-all duration-150"
-                    style={{ 
-                      transform: `scale(${zoom}) translate(${isDragging ? imagePosition.x : 0}%, ${isDragging ? imagePosition.y : 0}%)`,
-                      imageRendering: "crisp-edges",
-                      filter: "contrast(1.05) brightness(1.02)"
-                    }}
-                  />
+                  <div className="absolute inset-0 flex items-center justify-center overflow-hidden rounded-lg">
+                    <img 
+                      src={selectedProduct.image} 
+                      alt={selectedProduct.name} 
+                      className="h-full w-auto max-w-[95%] object-contain transition-all duration-150"
+                      style={{ 
+                        transform: `scale(${zoom}) translate(${isDragging ? imagePosition.x : 0}%, ${isDragging ? imagePosition.y : 0}%)`,
+                        imageRendering: "crisp-edges",
+                        filter: "contrast(1.05) brightness(1.02)"
+                      }}
+                    />
+                  </div>
                 </div>
                 
                 <p className="text-xs sm:text-sm text-slate-600 mb-2 sm:mb-3 md:mb-4 text-center">Scroll • Drag • Zoom</p>

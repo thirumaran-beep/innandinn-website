@@ -30,11 +30,11 @@ export function Hero() {
             We deliver excellence in every can. From household room fresheners and insect repellents to industrial gas cartridges and custom private-label solutions. Partner with Pondicherry's most reliable manufacturing hub.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-heading tracking-wide text-lg h-14 px-8 shadow-lg shadow-primary/20 transition-all hover:scale-105">
+          <div className="flex flex-col sm:flex-row gap-4 mt-8 relative z-20">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-heading tracking-wide text-base sm:text-lg h-12 sm:h-14 px-6 sm:px-8 shadow-xl shadow-primary/30 transition-all hover:scale-105 active:scale-95 rounded-lg font-bold">
               Get a Bulk Quote
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 hover:border-white font-heading tracking-wide text-lg h-14 px-8 transition-all">
+            <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/20 hover:border-white font-heading tracking-wide text-base sm:text-lg h-12 sm:h-14 px-6 sm:px-8 transition-all rounded-lg font-bold bg-white/5 backdrop-blur-sm">
               Explore Catalog <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
