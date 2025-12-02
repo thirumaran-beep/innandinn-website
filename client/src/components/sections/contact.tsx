@@ -36,13 +36,13 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-24 bg-slate-50">
+    <section id="contact" className="py-16 sm:py-20 md:py-24 bg-slate-50">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
           <div>
-            <span className="text-accent font-bold uppercase tracking-widest text-sm mb-2 block">Get In Touch</span>
-            <h2 className="text-4xl font-heading font-bold text-foreground mb-6">Ready to Scale Your Business?</h2>
-            <p className="text-muted-foreground text-lg mb-8">
+            <span className="text-accent font-bold uppercase tracking-widest text-xs sm:text-sm mb-2 block">Get In Touch</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-foreground mb-4 md:mb-6">Ready to Scale Your Business?</h2>
+            <p className="text-muted-foreground text-sm sm:text-base md:text-lg mb-6 md:mb-8">
               Whether you are a distributor looking for high-margin products or a brand seeking a private-label partner, we are here to deliver. Contact us for bulk pricing and catalogs.
             </p>
             

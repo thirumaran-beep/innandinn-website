@@ -144,10 +144,10 @@ export function Products() {
   return (
     <section id="products" className="py-24 bg-slate-50">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 animate-in slide-in-from-bottom-5 duration-700">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12 gap-4 md:gap-6 animate-in slide-in-from-bottom-5 duration-700">
           <div className="max-w-2xl">
-            <span className="text-accent font-bold uppercase tracking-widest text-sm mb-2 block">Our Services</span>
-            <h2 className="text-4xl font-heading font-bold text-foreground">Manufacturing & Services</h2>
+            <span className="text-accent font-bold uppercase tracking-widest text-xs sm:text-sm mb-2 block">Our Services</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-foreground">Manufacturing & Services</h2>
           </div>
           <div className="flex flex-wrap gap-2">
             {categories.map((cat) => (

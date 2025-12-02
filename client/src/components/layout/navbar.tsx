@@ -33,15 +33,15 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 h-auto py-3 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+        <Link href="/" className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity">
           <img 
             src={logo} 
             alt="Innovative & Innovators - Aerosol Manufacturing" 
-            className="h-24 w-auto object-contain" 
+            className="h-12 sm:h-16 md:h-24 w-auto object-contain" 
           />
-          <span className={cn("font-heading font-bold text-base leading-none tracking-tight")}>
+          <span className={cn("font-heading font-bold text-xs sm:text-sm md:text-base leading-none tracking-tight")}>
             <span className="text-primary">INNOVATIVE</span>
-            <span className="text-green-600 mx-1">&</span>
+            <span className="text-green-600 mx-0.5 sm:mx-1">&</span>
             <span className="text-primary">INNOVATORS PVT LTD</span>
           </span>
         </Link>

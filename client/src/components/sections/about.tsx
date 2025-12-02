@@ -5,11 +5,11 @@ export function About() {
   return (
     <section id="about" className="py-24 bg-white">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
           {/* Text Content */}
           <div className="order-2 lg:order-1 animate-in fade-in slide-in-from-left-8 duration-1000">
-            <span className="text-accent font-bold uppercase tracking-widest text-sm mb-2 block animate-in fade-in delay-200">Our Story</span>
-            <h2 className="text-4xl font-heading font-bold text-foreground mb-6 animate-in fade-in slide-in-from-left-8 delay-300 duration-1000">
+            <span className="text-accent font-bold uppercase tracking-widest text-xs sm:text-sm mb-2 block animate-in fade-in delay-200">Our Story</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-foreground mb-4 md:mb-6 animate-in fade-in slide-in-from-left-8 delay-300 duration-1000">
               Defining Industry Standards <br/> Since 1990
             </h2>
             

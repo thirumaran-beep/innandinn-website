@@ -19,22 +19,22 @@ export function Hero() {
       <div className="container mx-auto px-4 relative z-10 pt-32 md:pt-40">
         <div className="max-w-4xl animate-in slide-in-from-bottom-10 duration-700 fade-in">
           
-          <div className="mb-6 animate-in fade-in slide-in-from-left-8 duration-700">
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-heading font-bold mb-2 leading-tight">
+          <div className="mb-4 sm:mb-6 animate-in fade-in slide-in-from-left-8 duration-700">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-heading font-bold mb-2 leading-tight">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-blue-400 to-accent drop-shadow-lg">
                 Innovative & Innovators Pvt Ltd
               </span>
             </h2>
-            <div className="h-1 w-24 bg-gradient-to-r from-accent to-blue-400 rounded-full animate-in slide-in-from-left duration-1000 delay-300"></div>
+            <div className="h-1 w-16 sm:w-20 md:w-24 bg-gradient-to-r from-accent to-blue-400 rounded-full animate-in slide-in-from-left duration-1000 delay-300"></div>
           </div>
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 leading-tight animate-in fade-in slide-in-from-left-8 duration-1000 delay-150">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-4 sm:mb-6 leading-tight animate-in fade-in slide-in-from-left-8 duration-1000 delay-150">
             India's Trusted Manufacturer of <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/80">
               Premium Aerosols & Gas Products
             </span>
           </h1>
           
-          <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed animate-in fade-in slide-in-from-left-8 duration-1000 delay-300">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-300 mb-6 sm:mb-8 max-w-2xl leading-relaxed animate-in fade-in slide-in-from-left-8 duration-1000 delay-300">
             We deliver excellence in every can. From household room fresheners and insect repellents to industrial gas cartridges and custom private-label solutions. Partner with Pondicherry's most reliable manufacturing hub.
           </p>
           
