@@ -40,11 +40,11 @@ export function Navbar() {
             className="h-16 w-auto object-contain" 
           />
           <div className="flex flex-col">
-            <span className={cn("font-heading font-bold text-lg leading-none tracking-tight text-primary")}>
-              INNOVATIVE &
+            <span className={cn("font-heading font-bold text-sm leading-none tracking-tight text-primary")}>
+              INNOVATIVE & INNOVATORS
             </span>
-            <span className={cn("font-heading font-bold text-lg leading-none tracking-tight text-foreground")}>
-              INNOVATORS
+            <span className={cn("font-heading font-bold text-xs leading-none tracking-widest text-slate-600")}>
+              PVT LTD
             </span>
           </div>
         </Link>

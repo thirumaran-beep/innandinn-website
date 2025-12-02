@@ -9,8 +9,11 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-1 md:col-span-1">
             <div className="flex items-center gap-3 mb-6">
-              <img src={logo} alt="Innovative & Innovators Logo" className="h-12 w-auto rounded bg-white p-1" />
-              <span className="font-heading font-bold text-xl leading-tight">INNOVATIVE &<br/>INNOVATORS</span>
+              <img src={logo} alt="Innovative & Innovators Pvt Ltd Logo" className="h-12 w-auto rounded bg-white p-1" />
+              <div>
+                <span className="font-heading font-bold text-lg leading-tight block">INNOVATIVE &<br/>INNOVATORS</span>
+                <span className="font-heading text-xs tracking-widest text-slate-300">PVT LTD</span>
+              </div>
             </div>
             <p className="text-white/70 text-sm mb-6 leading-relaxed">
               Your trusted manufacturing partner for high-quality aerosol and gas products since 1990. Serving households and industries across India with excellence and safety.
