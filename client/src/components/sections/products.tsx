@@ -196,17 +196,18 @@ export function Products() {
               className="group bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 animate-in fade-in zoom-in-95 fill-mode-both cursor-pointer active:scale-95"
               style={{ animationDelay: `${index * 50}ms` }}
             >
-              <div className="relative h-56 sm:h-64 md:h-72 p-3 sm:p-4 md:p-5 bg-white flex items-center justify-center overflow-hidden">
+              <div className="relative h-56 sm:h-64 md:h-72 p-2 sm:p-3 md:p-4 bg-white flex items-center justify-center overflow-hidden aspect-square">
                 {product.badge && (
-                  <span className="absolute top-3 right-3 bg-accent text-white text-xs font-bold px-2 py-1 rounded shadow-sm z-10 animate-pulse">
+                  <span className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-accent text-white text-xs font-bold px-2 py-1 rounded shadow-sm z-10 animate-pulse">
                     {product.badge}
                   </span>
                 )}
                 <img 
                   src={product.image} 
                   alt={product.name}
-                  className="max-h-full max-w-full object-contain drop-shadow-lg transform group-hover:scale-105 transition-transform duration-500"
-                  style={{ imageRendering: "crisp-edges" }}
+                  data-testid={`product-image-${product.id}`}
+                  className="h-full w-full object-contain drop-shadow-lg transform group-hover:scale-105 transition-transform duration-500"
+                  style={{ imageRendering: "crisp-edges", maxHeight: "100%", maxWidth: "100%" }}
                 />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-[2px]">
                   <Button 
@@ -280,7 +281,7 @@ export function Products() {
                 {/* ZOOM CONTAINER - UNIQUE STYLES */}
                 <div 
                   className={cn(
-                    "w-full flex-1 min-h-[320px] sm:min-h-[480px] md:min-h-[700px] cursor-grab active:cursor-grabbing flex items-center justify-center transition-all duration-300 relative overflow-auto",
+                    "w-full flex-1 min-h-[350px] sm:min-h-[500px] md:min-h-[720px] cursor-grab active:cursor-grabbing flex items-center justify-center transition-all duration-300 relative",
                     // Unique border styles
                     selectedProduct.id % 5 === 1 ? "rounded-lg border-2 border-blue-300 hover:border-blue-500 bg-white shadow-lg" :
                     selectedProduct.id % 5 === 2 ? "rounded-2xl border-4 border-dashed border-orange-400 hover:border-orange-600 bg-orange-50/30" :
@@ -296,8 +297,9 @@ export function Products() {
                 >
                   <img 
                     src={selectedProduct.image} 
-                    alt={selectedProduct.name} 
-                    className="max-h-[320px] sm:max-h-[480px] md:max-h-[700px] max-w-[90%] transition-all duration-150 object-contain hover:drop-shadow-2xl"
+                    alt={selectedProduct.name}
+                    data-testid={`modal-image-${selectedProduct.id}`}
+                    className="max-h-[340px] sm:max-h-[490px] md:max-h-[710px] max-w-[95%] transition-all duration-150 object-contain hover:drop-shadow-2xl select-none"
                     style={{ 
                       transform: `scale(${zoom}) translate(${isDragging ? imagePosition.x : 0}%, ${isDragging ? imagePosition.y : 0}%)`,
                       imageRendering: "crisp-edges",
