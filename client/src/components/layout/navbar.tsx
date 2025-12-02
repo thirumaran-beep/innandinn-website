@@ -61,8 +61,10 @@ export function Navbar() {
             </a>
           ))}
           <Button 
+            data-testid="navbar-quote-button"
+            onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
             className={cn(
-              "font-heading tracking-wider bg-primary text-white hover:bg-primary/90"
+              "font-heading tracking-wider bg-primary text-white hover:bg-primary/90 transition-all duration-300 hover:shadow-lg"
             )}
             size="sm"
           >
@@ -92,14 +94,20 @@ export function Navbar() {
             <a
               key={link.name}
               href={link.href}
-              className="text-foreground font-heading text-lg py-2 border-b border-border/50 hover:text-primary transition-colors"
+              className="text-foreground font-heading text-base sm:text-lg py-2 border-b border-border/50 hover:text-primary transition-colors"
               onClick={() => setMobileMenuOpen(false)}
               aria-label={`Navigate to ${link.name}`}
             >
               {link.name}
             </a>
           ))}
-          <Button className="w-full mt-2">Request Quote</Button>
+          <Button 
+            data-testid="mobile-quote-button"
+            onClick={() => { document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }}
+            className="w-full mt-2 bg-primary hover:bg-primary/90 text-white font-heading"
+          >
+            Request Quote
+          </Button>
         </div>
       )}
     </nav>
