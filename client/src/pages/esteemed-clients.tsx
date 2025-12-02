@@ -99,7 +99,7 @@ export default function EsteemedClients() {
                 onClick={() => { setSelectedImage(product); setZoom(1); setImagePosition({ x: 0, y: 0 }); }}
                 className="group cursor-pointer bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:-translate-y-1"
               >
-                <div className="relative h-48 bg-black flex items-center justify-center overflow-hidden">
+                <div className="relative h-48 bg-white flex items-center justify-center overflow-hidden">
                   <img
                     src={product.image}
                     alt={product.title}
@@ -120,14 +120,14 @@ export default function EsteemedClients() {
       <Dialog open={!!selectedImage} onOpenChange={(open) => { if (!open) { setSelectedImage(null); setZoom(1); setImagePosition({ x: 0, y: 0 }); }}}>
         <DialogContent className="sm:max-w-[1000px] p-0 bg-white overflow-hidden max-h-[90vh]">
           {selectedImage && (
-            <div className="flex flex-col items-center justify-center gap-4 p-6 bg-black">
+            <div className="flex flex-col items-center justify-center gap-4 p-6 bg-white">
               <div className="text-center">
-                <h2 className="text-2xl font-heading font-bold text-white">{selectedImage.title}</h2>
+                <h2 className="text-2xl font-heading font-bold text-slate-900">{selectedImage.title}</h2>
               </div>
 
               {/* Advanced Zoom Image Container - Extra Large */}
               <div 
-                className="overflow-hidden rounded-lg border-2 border-slate-400 w-full h-[600px] cursor-grab active:cursor-grabbing bg-black flex items-center justify-center"
+                className="overflow-hidden rounded-lg border-2 border-slate-300 w-full h-[900px] cursor-grab active:cursor-grabbing bg-white flex items-center justify-center"
                 onWheel={handleMouseWheel}
                 onMouseMove={handleMouseMove}
                 onMouseDown={() => setIsDragging(true)}
@@ -137,7 +137,7 @@ export default function EsteemedClients() {
                 <img
                   src={selectedImage.image}
                   alt={selectedImage.title}
-                  className="max-h-[570px] w-auto object-contain transition-transform duration-150"
+                  className="max-h-[1040px] w-auto object-contain transition-transform duration-150"
                   style={{ 
                     transform: `scale(${zoom}) translate(${isDragging ? imagePosition.x : 0}%, ${isDragging ? imagePosition.y : 0}%)`,
                     imageRendering: "crisp-edges",
@@ -146,7 +146,7 @@ export default function EsteemedClients() {
                 />
               </div>
 
-              <p className="text-sm text-slate-300 text-center max-w-md">
+              <p className="text-sm text-slate-700 text-center max-w-md">
                 Use mouse wheel to zoom • Click and drag to pan • High resolution detail view
               </p>
 
@@ -155,28 +155,28 @@ export default function EsteemedClients() {
                 <Button
                   variant="outline"
                   onClick={() => setZoom(Math.max(0.5, zoom - 0.2))}
-                  className="gap-2 bg-slate-800 text-white border-slate-600 hover:bg-slate-700"
+                  className="gap-2 bg-slate-100 text-slate-900 border-slate-300 hover:bg-slate-200"
                 >
                   <ZoomOut className="h-4 w-4" /> Zoom Out
                 </Button>
-                <span className="px-4 py-2 text-sm font-bold bg-slate-700 text-white rounded border border-slate-600 min-w-[80px] text-center">{Math.round(zoom * 100)}%</span>
+                <span className="px-4 py-2 text-sm font-bold bg-slate-200 text-slate-900 rounded border border-slate-300 min-w-[80px] text-center">{Math.round(zoom * 100)}%</span>
                 <Button
                   variant="outline"
                   onClick={() => setZoom(Math.min(3, zoom + 0.2))}
-                  className="gap-2 bg-slate-800 text-white border-slate-600 hover:bg-slate-700"
+                  className="gap-2 bg-slate-100 text-slate-900 border-slate-300 hover:bg-slate-200"
                 >
                   <ZoomIn className="h-4 w-4" /> Zoom In
                 </Button>
                 <Button
                   variant="outline"
                   onClick={() => { setZoom(1); setImagePosition({ x: 0, y: 0 }); }}
-                  className="gap-2 bg-slate-800 text-white border-slate-600 hover:bg-slate-700"
+                  className="gap-2 bg-slate-100 text-slate-900 border-slate-300 hover:bg-slate-200"
                 >
                   <RotateCcw className="h-4 w-4" /> Reset
                 </Button>
               </div>
 
-              <p className="text-xs text-slate-500 text-center">Zoom range: 50% - 300% • Professional product photography</p>
+              <p className="text-xs text-slate-600 text-center">Zoom range: 50% - 300% • Professional product photography</p>
             </div>
           )}
         </DialogContent>

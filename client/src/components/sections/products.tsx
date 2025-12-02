@@ -143,7 +143,7 @@ export function Products() {
               style={{ animationDelay: `${index * 50}ms` }}
             >
               {/* Image Area */}
-              <div className="relative h-64 p-6 bg-black flex items-center justify-center overflow-hidden">
+              <div className="relative h-64 p-6 bg-white flex items-center justify-center overflow-hidden">
                 {product.badge && (
                   <span className="absolute top-3 right-3 bg-accent text-white text-xs font-bold px-2 py-1 rounded shadow-sm z-10">
                     {product.badge}
@@ -201,14 +201,14 @@ export function Products() {
         <DialogContent className="sm:max-w-[1100px] p-0 overflow-hidden bg-white max-h-[90vh]">
           {selectedProduct && (
             <div className="flex flex-col md:flex-row h-full gap-0">
-              <div className="w-full md:w-3/5 bg-black p-6 flex flex-col items-center justify-center relative min-h-[600px] border-r border-slate-200">
-                <div className="absolute top-4 left-4 text-xs font-bold text-slate-400 uppercase tracking-widest">
+              <div className="w-full md:w-3/5 bg-white p-6 flex flex-col items-center justify-center relative min-h-[600px] border-r border-slate-200">
+                <div className="absolute top-4 left-4 text-xs font-bold text-slate-600 uppercase tracking-widest">
                   {selectedProduct.category}
                 </div>
                 
                 {/* Zoom Image Container - Large Frame */}
                 <div 
-                  className="overflow-hidden rounded-lg border-2 border-slate-300 mb-4 w-full h-[550px] cursor-grab active:cursor-grabbing bg-black flex items-center justify-center"
+                  className="overflow-hidden rounded-lg border-2 border-slate-300 mb-4 w-full h-[900px] cursor-grab active:cursor-grabbing bg-white flex items-center justify-center"
                   onWheel={handleMouseWheel}
                   onMouseMove={handleMouseMove}
                   onMouseDown={() => setIsDragging(true)}
@@ -218,7 +218,7 @@ export function Products() {
                   <img 
                     src={selectedProduct.image} 
                     alt={selectedProduct.name} 
-                    className="max-h-[520px] w-auto object-contain transition-transform duration-150"
+                    className="max-h-[1040px] w-auto object-contain transition-transform duration-150"
                     style={{ 
                       transform: `scale(${zoom}) translate(${isDragging ? imagePosition.x : 0}%, ${isDragging ? imagePosition.y : 0}%)`,
                       imageRendering: "crisp-edges",
@@ -227,7 +227,7 @@ export function Products() {
                   />
                 </div>
                 
-                <p className="text-xs text-slate-400 mb-4 text-center">Scroll or drag to zoom • Use mouse wheel</p>
+                <p className="text-xs text-slate-600 mb-4 text-center">Scroll or drag to zoom • Use mouse wheel</p>
                 
                 {/* Zoom Controls */}
                 <div className="flex gap-2 flex-wrap justify-center">
