@@ -241,15 +241,31 @@ export function Products() {
         <DialogContent className="w-[95vw] sm:w-[90vw] md:max-w-[1200px] p-0 bg-white rounded-lg max-h-[95vh] overflow-hidden flex flex-col pr-0">
           {selectedProduct && (
             <div className="flex flex-col md:flex-row w-full h-full overflow-hidden flex-1">
-              {/* IMAGE SECTION - RESPONSIVE */}
-              <div className="w-full md:w-3/5 bg-white p-3 sm:p-4 md:p-4 flex flex-col items-center justify-center relative min-h-[350px] sm:min-h-[450px] md:min-h-full border-b md:border-b-0 md:border-r border-slate-200 gap-2 pt-8 sm:pt-8 md:pt-4 mr-0">
-                <div className="absolute top-10 sm:top-10 left-3 sm:left-4 text-xs font-bold text-slate-600 uppercase tracking-widest z-10 bg-white px-2 py-1 rounded shadow-sm">
+              {/* IMAGE SECTION - UNIQUE LAYOUTS PER PRODUCT */}
+              <div className={cn(
+                "w-full md:w-3/5 p-3 sm:p-4 md:p-4 flex flex-col items-center justify-center relative min-h-[350px] sm:min-h-[450px] md:min-h-full border-b md:border-b-0 md:border-r gap-2 pt-8 sm:pt-8 md:pt-4 mr-0",
+                // Unique backgrounds per product
+                selectedProduct.id % 5 === 1 ? "bg-gradient-to-br from-blue-50 to-white border-slate-200" :
+                selectedProduct.id % 5 === 2 ? "bg-gradient-to-br from-orange-50 to-white border-orange-200" :
+                selectedProduct.id % 5 === 3 ? "bg-gradient-to-br from-green-50 to-white border-green-200" :
+                selectedProduct.id % 5 === 4 ? "bg-gradient-to-br from-purple-50 to-white border-purple-200" :
+                "bg-gradient-to-br from-slate-50 to-white border-slate-200"
+              )}>
+                <div className="absolute top-10 sm:top-10 left-3 sm:left-4 text-xs font-bold text-slate-600 uppercase tracking-widest z-10 bg-white px-2 py-1 rounded shadow-md">
                   {selectedProduct.category}
                 </div>
                 
-                {/* ZOOM CONTAINER - RESPONSIVE - FIXED */}
+                {/* ZOOM CONTAINER - UNIQUE STYLES */}
                 <div 
-                  className="rounded-lg border-2 border-slate-300 w-full flex-1 min-h-[300px] sm:min-h-[400px] md:min-h-[750px] cursor-grab active:cursor-grabbing bg-white flex items-center justify-center transition-all duration-300 hover:border-primary relative"
+                  className={cn(
+                    "w-full flex-1 min-h-[300px] sm:min-h-[400px] md:min-h-[750px] cursor-grab active:cursor-grabbing flex items-center justify-center transition-all duration-300 relative",
+                    // Unique border styles
+                    selectedProduct.id % 5 === 1 ? "rounded-lg border-2 border-blue-300 hover:border-blue-500 bg-white shadow-lg" :
+                    selectedProduct.id % 5 === 2 ? "rounded-2xl border-4 border-dashed border-orange-400 hover:border-orange-600 bg-orange-50/30" :
+                    selectedProduct.id % 5 === 3 ? "rounded-none border-4 border-solid border-green-400 hover:border-green-600 bg-white shadow-2xl" :
+                    selectedProduct.id % 5 === 4 ? "rounded-full border-2 border-purple-300 hover:border-purple-600 bg-purple-50/20" :
+                    "rounded-xl border-2 border-slate-400 hover:border-primary bg-white shadow-md"
+                  )}
                   onWheel={handleMouseWheel}
                   onMouseMove={handleMouseMove}
                   onMouseDown={() => setIsDragging(true)}
@@ -259,7 +275,7 @@ export function Products() {
                   <img 
                     src={selectedProduct.image} 
                     alt={selectedProduct.name} 
-                    className="max-h-[290px] sm:max-h-[390px] md:max-h-[740px] w-auto transition-all duration-150 object-contain"
+                    className="max-h-[290px] sm:max-h-[390px] md:max-h-[740px] w-auto transition-all duration-150 object-contain hover:drop-shadow-2xl"
                     style={{ 
                       transform: `scale(${zoom}) translate(${isDragging ? imagePosition.x : 0}%, ${isDragging ? imagePosition.y : 0}%)`,
                       imageRendering: "crisp-edges",
