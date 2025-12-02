@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { ZoomIn, ZoomOut, RotateCcw, X } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { ZoomIn, ZoomOut, RotateCcw, X, ChevronUp, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
@@ -53,6 +53,7 @@ export default function EsteemedClients() {
   const [zoom, setZoom] = useState(1);
   const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
+  const galleryRef = useRef<HTMLDivElement>(null);
 
   const handleMouseWheel = (e: React.WheelEvent) => {
     e.preventDefault();
@@ -74,6 +75,14 @@ export default function EsteemedClients() {
     setZoom(newZoom);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const scrollToBottom = () => {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -91,7 +100,7 @@ export default function EsteemedClients() {
       {/* Gallery - RESPONSIVE GRID */}
       <section className="py-12 sm:py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6" ref={galleryRef}>
             {clientProducts.map((product, idx) => (
               <div
                 key={product.id}
@@ -112,6 +121,24 @@ export default function EsteemedClients() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Scroll Controls */}
+          <div className="flex gap-2 justify-center mt-12">
+            <button
+              onClick={scrollToTop}
+              className="p-3 bg-primary hover:bg-primary/90 text-white rounded-full shadow-lg hover:shadow-xl transition-all active:scale-95"
+              aria-label="Scroll to top"
+            >
+              <ChevronUp className="h-5 w-5" />
+            </button>
+            <button
+              onClick={scrollToBottom}
+              className="p-3 bg-primary hover:bg-primary/90 text-white rounded-full shadow-lg hover:shadow-xl transition-all active:scale-95"
+              aria-label="Scroll to bottom"
+            >
+              <ChevronDown className="h-5 w-5" />
+            </button>
           </div>
         </div>
       </section>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ArrowRight, ShoppingCart, Eye, ZoomIn, ZoomOut, RotateCcw, ChevronUp, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
@@ -67,6 +67,8 @@ export function Products() {
   const [zoom, setZoom] = useState(1);
   const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const gridRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
   const categories = ["All", ...Array.from(new Set(products.map(p => p.category)))];
@@ -100,6 +102,32 @@ export function Products() {
     setZoom(newZoom);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const section = document.getElementById('products');
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        setShowScrollTop(rect.top < -200);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    const section = document.getElementById('products');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const scrollToBottom = () => {
+    const section = document.getElementById('products');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+  };
+
   return (
     <section id="products" className="py-24 bg-slate-50">
       <div className="container mx-auto px-4">
@@ -126,7 +154,7 @@ export function Products() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative" ref={gridRef}>
           {filteredProducts.map((product, index) => (
             <div 
               key={product.id}
@@ -174,6 +202,24 @@ export function Products() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Scroll Controls */}
+        <div className="flex gap-2 justify-center mt-12">
+          <button
+            onClick={scrollToTop}
+            className="p-3 bg-primary hover:bg-primary/90 text-white rounded-full shadow-lg hover:shadow-xl transition-all active:scale-95 flex items-center gap-2"
+            aria-label="Scroll to top"
+          >
+            <ChevronUp className="h-5 w-5" />
+          </button>
+          <button
+            onClick={scrollToBottom}
+            className="p-3 bg-primary hover:bg-primary/90 text-white rounded-full shadow-lg hover:shadow-xl transition-all active:scale-95 flex items-center gap-2"
+            aria-label="Scroll to bottom"
+          >
+            <ChevronDown className="h-5 w-5" />
+          </button>
         </div>
       </div>
 
