@@ -28,6 +28,8 @@ import img17 from "@assets/17_1764659739450.png";
 import img18 from "@assets/18_1764659739450.png";
 import img19 from "@assets/19_1764659739450.png";
 import img20 from "@assets/20_1764659739451.png";
+import img21 from "@assets/21_1764667922969.png";
+import img22 from "@assets/22_1764667922971.png";
 
 interface Product {
   id: number;
@@ -59,17 +61,17 @@ const products: Product[] = [
   { id: 18, name: "Lavender Room Spray", category: "Air Freshener", image: img18, description: "Relaxing ambiance creation." },
   { id: 19, name: "Orange Energizer Spray", category: "Air Freshener", image: img19, description: "Energizing fresh scent." },
   { id: 20, name: "Green Apple Freshener", category: "Air Freshener", image: img20, description: "Fresh natural scent." },
-  { id: 21, name: "Butane Lighter Cartridge", category: "Gas Products", image: img1, description: "Premium butane refill for lighters.", badge: "Best Value" },
-  { id: 22, name: "Industrial Degreaser Spray", category: "Industrial", image: img2, description: "Heavy-duty cleaning solution." },
-  { id: 23, name: "Mosquito Repellent Aerosol", category: "Insect Control", image: img3, description: "Long-lasting mosquito protection.", badge: "Popular" },
-  { id: 24, name: "Furniture Polish Spray", category: "Air Freshener", image: img4, description: "Professional furniture care." },
-  { id: 25, name: "Compressed Air Duster", category: "Industrial", image: img5, description: "Electronics cleaning spray." },
-  { id: 26, name: "Silicone Lubricant Spray", category: "Industrial", image: img6, description: "Multi-purpose lubrication." },
-  { id: 27, name: "Odor Eliminator Spray", category: "Air Freshener", image: img7, description: "Professional odor control." },
-  { id: 28, name: "Flea & Tick Treatment", category: "Pet Care", image: img8, description: "Pet-safe insect control.", badge: "Vet Approved" },
-  { id: 29, name: "Surface Disinfectant Spray", category: "Industrial", image: img9, description: "Hospital-grade disinfection." },
-  { id: 30, name: "Aerosol Paint Spray", category: "Industrial", image: img10, description: "Professional-grade coating." },
-  { id: 31, name: "Universal Lubricant Spray", category: "Industrial", image: img11, description: "All-purpose WD-40 alternative." },
+  { id: 21, name: "Butane Lighter Cartridge", category: "Gas Products", image: img21, description: "Premium butane refill for lighters.", badge: "Best Value" },
+  { id: 22, name: "Industrial Degreaser Spray", category: "Industrial", image: img22, description: "Heavy-duty cleaning solution." },
+  { id: 23, name: "Mosquito Repellent Aerosol", category: "Insect Control", image: img1, description: "Long-lasting mosquito protection.", badge: "Popular" },
+  { id: 24, name: "Furniture Polish Spray", category: "Air Freshener", image: img2, description: "Professional furniture care." },
+  { id: 25, name: "Compressed Air Duster", category: "Industrial", image: img3, description: "Electronics cleaning spray." },
+  { id: 26, name: "Silicone Lubricant Spray", category: "Industrial", image: img4, description: "Multi-purpose lubrication." },
+  { id: 27, name: "Odor Eliminator Spray", category: "Air Freshener", image: img5, description: "Professional odor control." },
+  { id: 28, name: "Flea & Tick Treatment", category: "Pet Care", image: img6, description: "Pet-safe insect control.", badge: "Vet Approved" },
+  { id: 29, name: "Surface Disinfectant Spray", category: "Industrial", image: img7, description: "Hospital-grade disinfection." },
+  { id: 30, name: "Aerosol Paint Spray", category: "Industrial", image: img8, description: "Professional-grade coating." },
+  { id: 31, name: "Universal Lubricant Spray", category: "Industrial", image: img9, description: "All-purpose WD-40 alternative." },
 ];
 
 export function Products() {
