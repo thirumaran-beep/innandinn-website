@@ -39,8 +39,10 @@ export function Navbar() {
             alt="Innovative & Innovators - Aerosol Manufacturing" 
             className="h-16 w-auto object-contain" 
           />
-          <span className={cn("font-heading font-bold text-sm leading-none tracking-tight text-primary")}>
-            INNOVATIVE & INNOVATORS PVT LTD
+          <span className={cn("font-heading font-bold text-sm leading-none tracking-tight")}>
+            <span className="text-primary">INNOVATIVE</span>
+            <span className="text-green-600 mx-1">&</span>
+            <span className="text-primary">INNOVATORS PVT LTD</span>
           </span>
         </Link>
 
