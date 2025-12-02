@@ -179,11 +179,11 @@ export function Products() {
 
       {/* RESPONSIVE MODAL */}
       <Dialog open={!!selectedProduct} onOpenChange={(open) => { if (!open) { setSelectedProduct(null); setZoom(1); setImagePosition({ x: 0, y: 0 }); }}}>
-        <DialogContent className="w-[95vw] sm:w-[90vw] md:max-w-[1200px] p-0 overflow-visible bg-white rounded-lg max-h-[95vh]">
+        <DialogContent className="w-[95vw] sm:w-[90vw] md:max-w-[1200px] p-0 bg-white rounded-lg max-h-[95vh] overflow-hidden flex flex-col">
           {selectedProduct && (
-            <div className="flex flex-col md:flex-row w-full h-full overflow-hidden">
+            <div className="flex flex-col md:flex-row w-full h-full overflow-hidden flex-1">
               {/* IMAGE SECTION - RESPONSIVE */}
-              <div className="w-full md:w-3/5 bg-white p-3 sm:p-4 md:p-6 flex flex-col items-center justify-center relative min-h-[350px] sm:min-h-[450px] md:min-h-[700px] border-b md:border-b-0 md:border-r border-slate-200 overflow-visible">
+              <div className="w-full md:w-3/5 bg-white p-3 sm:p-4 md:p-6 flex flex-col items-center justify-center relative min-h-[350px] sm:min-h-[450px] md:min-h-full border-b md:border-b-0 md:border-r border-slate-200">
                 <div className="absolute top-2 sm:top-4 left-2 sm:left-4 text-xs font-bold text-slate-600 uppercase tracking-widest z-10">
                   {selectedProduct.category}
                 </div>
@@ -247,7 +247,7 @@ export function Products() {
               </div>
               
               {/* FORM SECTION - RESPONSIVE */}
-              <div className="w-full md:w-2/5 p-3 sm:p-5 md:p-8 flex flex-col overflow-y-auto max-h-[calc(95vh-80px)] sm:max-h-[calc(95vh-100px)] md:max-h-[600px]">
+              <div className="w-full md:w-2/5 p-3 sm:p-5 md:p-8 flex flex-col overflow-y-auto overflow-x-hidden flex-1 min-h-0">
                 <DialogHeader className="mb-4 sm:mb-6">
                   <DialogTitle className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-2">
                     {selectedProduct.name}
