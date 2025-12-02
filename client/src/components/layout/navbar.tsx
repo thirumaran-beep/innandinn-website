@@ -33,22 +33,20 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/">
-          <a className="flex items-center gap-3">
-            <img 
-              src={logo} 
-              alt="Innovative & Innovators" 
-              className="h-16 w-auto object-contain" 
-            />
-            <div className="flex flex-col">
-              <span className={cn("font-heading font-bold text-lg leading-none tracking-tight text-primary")}>
-                INNOVATIVE &
-              </span>
-              <span className={cn("font-heading font-bold text-lg leading-none tracking-tight text-foreground")}>
-                INNOVATORS
-              </span>
-            </div>
-          </a>
+        <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+          <img 
+            src={logo} 
+            alt="Innovative & Innovators - Aerosol Manufacturing" 
+            className="h-16 w-auto object-contain" 
+          />
+          <div className="flex flex-col">
+            <span className={cn("font-heading font-bold text-lg leading-none tracking-tight text-primary")}>
+              INNOVATIVE &
+            </span>
+            <span className={cn("font-heading font-bold text-lg leading-none tracking-tight text-foreground")}>
+              INNOVATORS
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Nav */}
@@ -60,6 +58,7 @@ export function Navbar() {
               className={cn(
                 "text-sm font-medium uppercase tracking-wide transition-colors hover:text-accent text-foreground"
               )}
+              aria-label={`Navigate to ${link.name}`}
             >
               {link.name}
             </a>
@@ -78,6 +77,8 @@ export function Navbar() {
         <button
           className="md:hidden"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle mobile menu"
+          aria-expanded={mobileMenuOpen}
         >
           {mobileMenuOpen ? (
             <X className={cn("h-6 w-6 text-foreground")} />
@@ -89,13 +90,14 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-20 left-0 right-0 bg-background border-b border-border shadow-lg p-4 flex flex-col gap-4 animate-in slide-in-from-top-5">
+        <div className="md:hidden absolute top-20 left-0 right-0 bg-background border-b border-border shadow-lg p-4 flex flex-col gap-4 animate-in slide-in-from-top-5" role="navigation" aria-label="Mobile menu">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-foreground font-heading text-lg py-2 border-b border-border/50"
+              className="text-foreground font-heading text-lg py-2 border-b border-border/50 hover:text-primary transition-colors"
               onClick={() => setMobileMenuOpen(false)}
+              aria-label={`Navigate to ${link.name}`}
             >
               {link.name}
             </a>
