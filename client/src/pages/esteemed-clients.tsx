@@ -118,16 +118,16 @@ export default function EsteemedClients() {
 
       {/* Image Zoom Modal with Advanced Features */}
       <Dialog open={!!selectedImage} onOpenChange={(open) => { if (!open) { setSelectedImage(null); setZoom(1); setImagePosition({ x: 0, y: 0 }); }}}>
-        <DialogContent className="sm:max-w-[800px] p-0 bg-white overflow-hidden">
+        <DialogContent className="sm:max-w-[1000px] p-0 bg-white overflow-hidden max-h-[90vh]">
           {selectedImage && (
-            <div className="flex flex-col items-center justify-center gap-6 p-8">
+            <div className="flex flex-col items-center justify-center gap-4 p-6">
               <div className="text-center">
                 <h2 className="text-2xl font-heading font-bold text-foreground">{selectedImage.title}</h2>
               </div>
 
-              {/* Advanced Zoom Image Container */}
+              {/* Advanced Zoom Image Container - Extra Large */}
               <div 
-                className="overflow-hidden rounded-lg border-2 border-slate-200 w-full max-h-[450px] cursor-grab active:cursor-grabbing bg-slate-50 flex items-center justify-center"
+                className="overflow-hidden rounded-lg border-2 border-slate-200 w-full h-[600px] cursor-grab active:cursor-grabbing bg-slate-50 flex items-center justify-center"
                 onWheel={handleMouseWheel}
                 onMouseMove={handleMouseMove}
                 onMouseDown={() => setIsDragging(true)}
@@ -137,7 +137,7 @@ export default function EsteemedClients() {
                 <img
                   src={selectedImage.image}
                   alt={selectedImage.title}
-                  className="max-h-[420px] w-auto object-contain transition-transform duration-150"
+                  className="max-h-[570px] w-auto object-contain transition-transform duration-150"
                   style={{ 
                     transform: `scale(${zoom}) translate(${isDragging ? imagePosition.x : 0}%, ${isDragging ? imagePosition.y : 0}%)`,
                     imageRendering: "crisp-edges",

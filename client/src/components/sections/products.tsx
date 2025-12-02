@@ -198,17 +198,17 @@ export function Products() {
 
       {/* Product Detail / Enquiry Modal with Advanced Zoom */}
       <Dialog open={!!selectedProduct} onOpenChange={(open) => { if (!open) { setSelectedProduct(null); setZoom(1); setImagePosition({ x: 0, y: 0 }); }}}>
-        <DialogContent className="sm:max-w-[900px] p-0 overflow-hidden bg-white">
+        <DialogContent className="sm:max-w-[1100px] p-0 overflow-hidden bg-white max-h-[90vh]">
           {selectedProduct && (
-            <div className="flex flex-col md:flex-row h-full">
-              <div className="w-full md:w-1/2 bg-white p-8 flex flex-col items-center justify-center relative min-h-[400px] border-r border-slate-200">
+            <div className="flex flex-col md:flex-row h-full gap-0">
+              <div className="w-full md:w-3/5 bg-white p-6 flex flex-col items-center justify-center relative min-h-[600px] border-r border-slate-200">
                 <div className="absolute top-4 left-4 text-xs font-bold text-slate-400 uppercase tracking-widest">
                   {selectedProduct.category}
                 </div>
                 
-                {/* Zoom Image Container */}
+                {/* Zoom Image Container - Large Frame */}
                 <div 
-                  className="overflow-hidden rounded-lg border-2 border-slate-200 mb-4 w-full max-h-[300px] cursor-grab active:cursor-grabbing bg-slate-50 flex items-center justify-center"
+                  className="overflow-hidden rounded-lg border-2 border-slate-200 mb-4 w-full h-[550px] cursor-grab active:cursor-grabbing bg-slate-50 flex items-center justify-center"
                   onWheel={handleMouseWheel}
                   onMouseMove={handleMouseMove}
                   onMouseDown={() => setIsDragging(true)}
@@ -218,7 +218,7 @@ export function Products() {
                   <img 
                     src={selectedProduct.image} 
                     alt={selectedProduct.name} 
-                    className="max-h-[280px] w-auto object-contain transition-transform duration-150"
+                    className="max-h-[520px] w-auto object-contain transition-transform duration-150"
                     style={{ 
                       transform: `scale(${zoom}) translate(${isDragging ? imagePosition.x : 0}%, ${isDragging ? imagePosition.y : 0}%)`,
                       imageRendering: "crisp-edges",
@@ -259,7 +259,7 @@ export function Products() {
                 </div>
               </div>
               
-              <div className="w-full md:w-1/2 p-8 flex flex-col">
+              <div className="w-full md:w-2/5 p-8 flex flex-col overflow-y-auto max-h-[600px]">
                 <DialogHeader className="mb-6">
                   <DialogTitle className="text-2xl font-heading font-bold text-foreground mb-2">
                     {selectedProduct.name}
