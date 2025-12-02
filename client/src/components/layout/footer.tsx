@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, ShoppingBag, Globe } from "lucide-react";
+import { MapPin, Phone, Mail, ShoppingBag, Globe, Instagram, Linkedin } from "lucide-react";
 import logo from "@assets/logo.png";
 
 export function Footer() {
@@ -17,6 +17,24 @@ export function Footer() {
             </p>
             <div className="flex gap-4">
               {/* Social Links */}
+              <a 
+                href="https://www.instagram.com/innoandinno?utm_source=qr" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="h-10 w-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#E4405F] transition-all cursor-pointer group"
+                title="Follow on Instagram"
+              >
+                <Instagram className="h-5 w-5 text-white group-hover:scale-110 transition-transform" />
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/bala-murugan-56a2402a7" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="h-10 w-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#0A66C2] transition-all cursor-pointer group"
+                title="Connect on LinkedIn"
+              >
+                <Linkedin className="h-5 w-5 text-white group-hover:scale-110 transition-transform" />
+              </a>
               <a 
                 href="https://www.indiamart.com/innovative-innovators/profile.html?srsltid=AfmBOooS5ugvbhABFzI27MgI7fc2pEo9R2aB04qdHgcHFb9RW9EC2Dsk" 
                 target="_blank" 
@@ -76,9 +94,12 @@ export function Footer() {
                   <Mail className="h-5 w-5 text-accent shrink-0" />
                   <a href="mailto:info@innovative-innovators.com" className="text-sm text-white/70 hover:text-white transition-colors">info@innovative-innovators.com</a>
                 </div>
-                <div className="flex items-center gap-3">
-                  <Phone className="h-5 w-5 text-accent shrink-0" />
-                  <span className="text-sm text-white/70">+91 98765 43210</span>
+                <div className="flex items-start gap-3">
+                  <Phone className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-sm text-white/70"><strong>Sathya (Mgr):</strong> +91 98405 43541</p>
+                    <p className="text-sm text-white/70"><strong>R Bala (GM):</strong> +91 92620 80311</p>
+                  </div>
                 </div>
                 <div className="mt-4 pt-4 border-t border-white/10">
                   <p className="text-xs text-white/40">GST: <span className="text-white/60 font-mono">34AABCI0658L1ZJ</span></p>
