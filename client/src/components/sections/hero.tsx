@@ -19,10 +19,13 @@ export function Hero() {
       <div className="container mx-auto px-4 relative z-10 pt-32 md:pt-40">
         <div className="max-w-4xl animate-in slide-in-from-bottom-10 duration-700 fade-in">
           
-          <div className="mb-4">
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-heading font-bold text-accent mb-2 leading-tight">
-              Innovative & Innovators Pvt Ltd
+          <div className="mb-6">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-heading font-bold mb-2 leading-tight">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-blue-400 to-accent drop-shadow-lg">
+                Innovative & Innovators Pvt Ltd
+              </span>
             </h2>
+            <div className="h-1 w-24 bg-gradient-to-r from-accent to-blue-400 rounded-full"></div>
           </div>
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 leading-tight">
             India's Trusted Manufacturer of <br />
