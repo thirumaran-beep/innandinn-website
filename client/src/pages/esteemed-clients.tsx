@@ -127,7 +127,7 @@ export default function EsteemedClients() {
 
               {/* ZOOM CONTAINER - FULLY RESPONSIVE */}
               <div 
-                className="rounded-lg border-2 border-slate-300 w-full h-[250px] sm:h-[400px] md:h-[900px] cursor-grab active:cursor-grabbing bg-white flex items-center justify-center transition-all hover:border-primary hover:shadow-lg"
+                className="rounded-lg border-2 border-slate-300 w-full h-[280px] sm:h-[430px] md:h-[800px] cursor-grab active:cursor-grabbing bg-white flex items-center justify-center transition-all hover:border-primary hover:shadow-lg"
                 onWheel={handleMouseWheel}
                 onMouseMove={handleMouseMove}
                 onMouseDown={() => setIsDragging(true)}
@@ -137,7 +137,7 @@ export default function EsteemedClients() {
                 <img
                   src={selectedImage.image}
                   alt={selectedImage.title}
-                  className="max-h-[240px] sm:max-h-[390px] md:max-h-[1100px] w-auto object-contain transition-all duration-150"
+                  className="max-h-[270px] sm:max-h-[420px] md:max-h-[790px] w-auto object-contain transition-all duration-150"
                   style={{ 
                     transform: `scale(${zoom}) translate(${isDragging ? imagePosition.x : 0}%, ${isDragging ? imagePosition.y : 0}%)`,
                     imageRendering: "crisp-edges",

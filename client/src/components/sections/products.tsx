@@ -183,14 +183,14 @@ export function Products() {
           {selectedProduct && (
             <div className="flex flex-col md:flex-row w-full h-full overflow-hidden flex-1">
               {/* IMAGE SECTION - RESPONSIVE */}
-              <div className="w-full md:w-3/5 bg-white p-3 sm:p-4 md:p-6 flex flex-col items-center justify-center relative min-h-[350px] sm:min-h-[450px] md:min-h-full border-b md:border-b-0 md:border-r border-slate-200">
+              <div className="w-full md:w-3/5 bg-white p-3 sm:p-4 md:p-4 flex flex-col items-center justify-center relative min-h-[350px] sm:min-h-[450px] md:min-h-full border-b md:border-b-0 md:border-r border-slate-200 gap-2">
                 <div className="absolute top-2 sm:top-4 left-2 sm:left-4 text-xs font-bold text-slate-600 uppercase tracking-widest z-10">
                   {selectedProduct.category}
                 </div>
                 
                 {/* ZOOM CONTAINER - RESPONSIVE - FIXED */}
                 <div 
-                  className="rounded-lg border-2 border-slate-300 mb-2 sm:mb-3 md:mb-4 w-full flex-1 min-h-[280px] sm:min-h-[380px] md:min-h-[680px] cursor-grab active:cursor-grabbing bg-white flex items-center justify-center transition-all duration-300 hover:border-primary relative"
+                  className="rounded-lg border-2 border-slate-300 w-full flex-1 min-h-[300px] sm:min-h-[400px] md:min-h-[750px] cursor-grab active:cursor-grabbing bg-white flex items-center justify-center transition-all duration-300 hover:border-primary relative"
                   onWheel={handleMouseWheel}
                   onMouseMove={handleMouseMove}
                   onMouseDown={() => setIsDragging(true)}
@@ -200,7 +200,7 @@ export function Products() {
                   <img 
                     src={selectedProduct.image} 
                     alt={selectedProduct.name} 
-                    className="max-h-[270px] sm:max-h-[370px] md:max-h-[1080px] w-auto transition-all duration-150 object-contain"
+                    className="max-h-[290px] sm:max-h-[390px] md:max-h-[740px] w-auto transition-all duration-150 object-contain"
                     style={{ 
                       transform: `scale(${zoom}) translate(${isDragging ? imagePosition.x : 0}%, ${isDragging ? imagePosition.y : 0}%)`,
                       imageRendering: "crisp-edges",
@@ -209,7 +209,7 @@ export function Products() {
                   />
                 </div>
                 
-                <p className="text-xs sm:text-sm text-slate-600 mb-2 sm:mb-3 md:mb-4 text-center">Scroll • Drag • Zoom</p>
+                <p className="text-xs sm:text-sm text-slate-600 text-center">Scroll • Drag • Zoom</p>
                 
                 {/* ZOOM CONTROLS - RESPONSIVE */}
                 <div className="flex gap-1 sm:gap-2 flex-wrap justify-center w-full">
