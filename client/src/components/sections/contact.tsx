@@ -74,8 +74,18 @@ export function Contact() {
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                   </div>
                   <div>
-                    <p className="font-bold text-foreground">Head Office</p>
+                    <p className="font-bold text-foreground">Pondicherry HQ</p>
                     <p className="text-muted-foreground">No. 13, Reddiyar Street, Sooramangalam, Pondicherry – 605106</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                   <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </div>
+                  <div>
+                    <p className="font-bold text-foreground">Chennai Branch</p>
+                    <p className="text-muted-foreground">No. 44, VR Mall, Jawaharlal Nehru Road, Anna Nagar West, Chennai, Tamil Nadu 600040</p>
                   </div>
                 </div>
               </div>
@@ -83,7 +93,7 @@ export function Contact() {
           </div>
 
           <div className="bg-white p-8 md:p-10 rounded-xl shadow-lg border border-border/50">
-            <h3 className="text-2xl font-heading font-bold mb-6">Request a Quote</h3>
+            <h3 className="text-2xl font-heading font-bold mb-6">Request a Bulk Quote</h3>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

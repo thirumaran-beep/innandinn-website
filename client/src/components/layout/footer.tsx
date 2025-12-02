@@ -38,15 +38,15 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Products */}
+          {/* Services */}
           <div>
-            <h4 className="text-lg font-heading font-bold mb-6 text-primary">Our Products</h4>
+            <h4 className="text-lg font-heading font-bold mb-6 text-primary">Our Services</h4>
             <ul className="space-y-3 text-sm text-white/70">
-              <li><a href="#products" className="hover:text-white transition-colors hover:translate-x-1 inline-block">Room Air Fresheners</a></li>
-              <li><a href="#products" className="hover:text-white transition-colors hover:translate-x-1 inline-block">Mosquito & Insect Killers</a></li>
-              <li><a href="#products" className="hover:text-white transition-colors hover:translate-x-1 inline-block">Butane Gas Cartridges</a></li>
-              <li><a href="#products" className="hover:text-white transition-colors hover:translate-x-1 inline-block">Industrial Rust Sprays</a></li>
-              <li><a href="#products" className="hover:text-white transition-colors hover:translate-x-1 inline-block">Pet Care Solutions</a></li>
+              <li><a href="#products" className="hover:text-white transition-colors hover:translate-x-1 inline-block">Aerosol Manufacturing</a></li>
+              <li><a href="#products" className="hover:text-white transition-colors hover:translate-x-1 inline-block">Private Label (OEM)</a></li>
+              <li><a href="#products" className="hover:text-white transition-colors hover:translate-x-1 inline-block">Bulk Ordering</a></li>
+              <li><a href="#products" className="hover:text-white transition-colors hover:translate-x-1 inline-block">Custom Formulations</a></li>
+              <li><a href="#products" className="hover:text-white transition-colors hover:translate-x-1 inline-block">Consultation & Support</a></li>
             </ul>
           </div>
 
@@ -66,7 +66,7 @@ export function Footer() {
                   <MapPin className="h-5 w-5 text-accent shrink-0 mt-1" />
                   <div>
                     <p className="text-sm font-bold text-white">Chennai Branch</p>
-                    <p className="text-sm text-white/60 leading-relaxed">B002, Metrozone, Anna Nagar, Chennai</p>
+                    <p className="text-sm text-white/60 leading-relaxed">No. 44, VR Mall, Jawaharlal Nehru Road, Anna Nagar West, Chennai, Tamil Nadu 600040</p>
                   </div>
                 </div>
               </div>
@@ -81,10 +81,7 @@ export function Footer() {
                   <span className="text-sm text-white/70">+91 98765 43210</span>
                 </div>
                 <div className="mt-4 pt-4 border-t border-white/10">
-                  <div className="flex justify-between items-center">
-                    <p className="text-xs text-white/40">GST: <span className="text-white/60 font-mono">34AABCI0658L1ZJ</span></p>
-                    <p className="text-xs text-white/40">IEC: <span className="text-white/60 font-mono">0494004941</span></p>
-                  </div>
+                  <p className="text-xs text-white/40">GST: <span className="text-white/60 font-mono">34AABCI0658L1ZJ</span></p>
                 </div>
               </div>
             </div>

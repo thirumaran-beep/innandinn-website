@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, ShoppingCart, Eye, Check } from "lucide-react";
+import { ArrowRight, ShoppingCart, Eye, ZoomIn, ZoomOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -8,26 +8,26 @@ import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 
 // Import all product images
-import img1 from "@assets/product-insect-killer.png"; // Kokron Power
-import img2 from "@assets/product-insect-killer-2.png"; // Kokron Plus
-import img3 from "@assets/product-insect-killer-3.png"; // Exit No Entry (Black/Yellow)
-import img4 from "@assets/product-rust-spray.png"; // Fasremo 4Z
-import img5 from "@assets/5_1764224991655.png"; // Pest Seal Cockroach
-import img6 from "@assets/product-pet-spray.png"; // TickFree
-import img7 from "@assets/7_1764224991656.png"; // Exit No Entry (Discount)
-import img8 from "@assets/8_1764224991657.png"; // Pest Seal (Red/White)
-import img9 from "@assets/9_1764224991657.png"; // Pest Seal Mosquito
-import img10 from "@assets/10_1764224991658.png"; // Kokron Plus (Red)
-import img11 from "@assets/11_1764224991659.png"; // Go Strong Mosquito
-import img12 from "@assets/12_1764224991659.png"; // Axk Wix Shot
-import img13 from "@assets/13_1764224991660.png"; // Fasremo 4Z (Small)
-import img14 from "@assets/14_1764224991660.png"; // HiCare Auto Mos
-import img15 from "@assets/15_1764224991661.png"; // Little's Nok Out
-import img16 from "@assets/product-air-freshener.png"; // Moi Pink Rose
-import img17 from "@assets/17_1764224991662.png"; // British Fragrances Ever Fresh
-import img18 from "@assets/18_1764224991662.png"; // British Fragrances Ever Fresh (Pink)
-import img19 from "@assets/19_1764224991663.png"; // British Fragrances Lavender
-import img20 from "@assets/20_1764224991664.png"; // British Fragrances Orange
+import img1 from "@assets/product-insect-killer.png";
+import img2 from "@assets/product-insect-killer-2.png";
+import img3 from "@assets/product-insect-killer-3.png";
+import img4 from "@assets/product-rust-spray.png";
+import img5 from "@assets/5_1764224991655.png";
+import img6 from "@assets/product-pet-spray.png";
+import img7 from "@assets/7_1764224991656.png";
+import img8 from "@assets/8_1764224991657.png";
+import img9 from "@assets/9_1764224991657.png";
+import img10 from "@assets/10_1764224991658.png";
+import img11 from "@assets/11_1764224991659.png";
+import img12 from "@assets/12_1764224991659.png";
+import img13 from "@assets/13_1764224991660.png";
+import img14 from "@assets/14_1764224991660.png";
+import img15 from "@assets/15_1764224991661.png";
+import img16 from "@assets/product-air-freshener.png";
+import img17 from "@assets/17_1764224991662.png";
+import img18 from "@assets/18_1764224991662.png";
+import img19 from "@assets/19_1764224991663.png";
+import img20 from "@assets/20_1764224991664.png";
 
 interface Product {
   id: number;
@@ -35,43 +35,36 @@ interface Product {
   category: string;
   image: string;
   description: string;
-  price?: string;
   badge?: string;
 }
 
 const products: Product[] = [
-  // Insect Control
-  { id: 1, name: "Kokron Power", category: "Insect Control", image: img1, description: "Multi-insect killer spray, protects against disease-carrying pests.", badge: "Bestseller" },
-  { id: 2, name: "Kokron Plus", category: "Insect Control", image: img2, description: "Advanced formula for stubborn pests and insects.", price: "₹180" },
-  { id: 3, name: "Exit No Entry", category: "Insect Control", image: img3, description: "Multi-purpose insect killer, fresh lemon fragrance.", badge: "New" },
-  { id: 7, name: "Exit No Entry (Promo)", category: "Insect Control", image: img7, description: "Special promotional pack, kills 100% insects.", price: "₹150", badge: "Sale" },
-  { id: 5, name: "Pest Seal Cockroach", category: "Insect Control", image: img5, description: "Specialized cockroach killer spray for kitchen and home.", price: "₹199" },
-  { id: 8, name: "Pest Seal Universal", category: "Insect Control", image: img8, description: "Effective against cockroaches, ants, and other crawling insects.", price: "₹210" },
-  { id: 9, name: "Pest Seal Mosquito", category: "Insect Control", image: img9, description: "Instant kill mosquito spray, protects against dengue.", price: "₹175" },
-  { id: 10, name: "Kokron Plus Red", category: "Insect Control", image: img10, description: "Extra strong formula for heavy infestations.", price: "₹220" },
-  { id: 11, name: "Go Strong", category: "Insect Control", image: img11, description: "Kills mosquitoes in a flash with instant action.", price: "₹140" },
-  { id: 12, name: "Axk Wix Shot", category: "Insect Control", image: img12, description: "Eco-friendly multi insect killer, safe for home use.", badge: "Eco-Friendly" },
-  { id: 14, name: "HiCare Auto Mos", category: "Insect Control", image: img14, description: "Automatic spray refill for continuous mosquito protection.", price: "₹250" },
-  { id: 15, name: "Little's Nok Out", category: "Insect Control", image: img15, description: "Powerful multi-insect killer for total home protection.", price: "₹165" },
-
-  // Air Fresheners
-  { id: 16, name: "Moi Pink Rose", category: "Air Freshener", image: img16, description: "Premium room freshener with long-lasting rose fragrance.", badge: "Popular" },
-  { id: 17, name: "Ever Fresh Classic", category: "Air Freshener", image: img17, description: "British fragrances collection, eliminates odors instantly.", price: "₹199" },
-  { id: 18, name: "Ever Fresh Floral", category: "Air Freshener", image: img18, description: "Soft floral scent for a refreshing home atmosphere.", price: "₹199" },
-  { id: 19, name: "British Lavender", category: "Air Freshener", image: img19, description: "Calming lavender scent for relaxation and freshness.", price: "₹210" },
-  { id: 20, name: "Live Orange", category: "Air Freshener", image: img20, description: "Zesty orange fragrance to energize your living space.", price: "₹210" },
-
-  // Industrial & Specialty
-  { id: 4, name: "Fasremo 4Z", category: "Industrial", image: img4, description: "Rust release spray, lubricates and protects metal parts.", price: "₹250" },
-  { id: 13, name: "Fasremo 4Z Mini", category: "Industrial", image: img13, description: "Compact rust release spray for toolbox and easy carry.", price: "₹120" },
-
-  // Pet Care
-  { id: 6, name: "TickFree Spray", category: "Pet Care", image: img6, description: "Fipronil spray for dogs and cats, controls ticks and fleas.", badge: "Vet Approved" },
+  { id: 1, name: "Multi-Insect Killer Spray", category: "Insect Control", image: img1, description: "Professional-grade insect control solution.", badge: "Bestseller" },
+  { id: 2, name: "Advanced Pest Formula", category: "Insect Control", image: img2, description: "Heavy-duty pest elimination." },
+  { id: 3, name: "Lemon Scent Insect Spray", category: "Insect Control", image: img3, description: "Fresh fragrance pest control.", badge: "New" },
+  { id: 7, name: "Promotional Insect Pack", category: "Insect Control", image: img7, description: "Bulk-friendly insect spray.", badge: "Sale" },
+  { id: 5, name: "Cockroach Elimination Spray", category: "Insect Control", image: img5, description: "Specialized cockroach control." },
+  { id: 8, name: "Universal Pest Spray", category: "Insect Control", image: img8, description: "Multi-purpose pest solution." },
+  { id: 9, name: "Mosquito Protection Spray", category: "Insect Control", image: img9, description: "Dengue protection spray." },
+  { id: 10, name: "Extra Strong Formula", category: "Insect Control", image: img10, description: "Industrial-strength solution." },
+  { id: 11, name: "Flash Action Mosquito Spray", category: "Insect Control", image: img11, description: "Instant mosquito elimination." },
+  { id: 12, name: "Eco-Friendly Insect Killer", category: "Insect Control", image: img12, description: "Safe, natural formulation.", badge: "Eco-Friendly" },
+  { id: 14, name: "Automatic Mosquito Refill", category: "Insect Control", image: img14, description: "Continuous protection system." },
+  { id: 15, name: "Total Home Protection Spray", category: "Insect Control", image: img15, description: "Complete insect defense." },
+  { id: 16, name: "Premium Room Freshener", category: "Air Freshener", image: img16, description: "Long-lasting fragrance solution.", badge: "Popular" },
+  { id: 17, name: "Classic Air Freshener", category: "Air Freshener", image: img17, description: "Professional odor elimination." },
+  { id: 18, name: "Floral Scent Freshener", category: "Air Freshener", image: img18, description: "Premium floral atmosphere." },
+  { id: 19, name: "Lavender Room Spray", category: "Air Freshener", image: img19, description: "Relaxing ambiance creation." },
+  { id: 20, name: "Orange Energizer Spray", category: "Air Freshener", image: img20, description: "Energizing fresh scent." },
+  { id: 4, name: "Industrial Rust Release Spray", category: "Industrial", image: img4, description: "Professional metal protection." },
+  { id: 13, name: "Compact Rust Spray", category: "Industrial", image: img13, description: "Portable rust solution." },
+  { id: 6, name: "Pet Care Treatment", category: "Pet Care", image: img6, description: "Vet-approved pet protection.", badge: "Vet Approved" },
 ];
 
 export function Products() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [zoom, setZoom] = useState(1);
   const { toast } = useToast();
 
   const categories = ["All", ...Array.from(new Set(products.map(p => p.category)))];
@@ -84,9 +77,10 @@ export function Products() {
     e.preventDefault();
     toast({
       title: "Enquiry Sent!",
-      description: `We've received your interest in ${selectedProduct?.name}. Our team will contact you shortly.`,
+      description: `Request received for ${selectedProduct?.name}. Our team will contact you shortly.`,
     });
     setSelectedProduct(null);
+    setZoom(1);
   };
 
   return (
@@ -94,8 +88,8 @@ export function Products() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 animate-in slide-in-from-bottom-5 duration-700">
           <div className="max-w-2xl">
-            <span className="text-accent font-bold uppercase tracking-widest text-sm mb-2 block">Our Full Range</span>
-            <h2 className="text-4xl font-heading font-bold text-foreground">Product Catalog</h2>
+            <span className="text-accent font-bold uppercase tracking-widest text-sm mb-2 block">Our Services</span>
+            <h2 className="text-4xl font-heading font-bold text-foreground">Manufacturing & Services</h2>
           </div>
           
           {/* Category Filter */}
@@ -143,7 +137,7 @@ export function Products() {
                   <Button 
                     size="sm" 
                     className="bg-white text-primary hover:bg-primary hover:text-white font-bold rounded-full"
-                    onClick={() => setSelectedProduct(product)}
+                    onClick={() => { setSelectedProduct(product); setZoom(1); }}
                   >
                     <Eye className="h-4 w-4 mr-2" /> View
                   </Button>
@@ -160,12 +154,12 @@ export function Products() {
                 
                 <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
                   <span className="font-bold text-lg text-slate-700">
-                    {product.price ? product.price : "Bulk Quote"}
+                    Bulk Quote
                   </span>
                   <Button 
                     size="sm" 
                     className="rounded-full bg-slate-900 hover:bg-accent transition-colors duration-300"
-                    onClick={() => setSelectedProduct(product)}
+                    onClick={() => { setSelectedProduct(product); setZoom(1); }}
                   >
                     <ShoppingCart className="h-4 w-4 mr-2" />
                     Enquire
@@ -177,20 +171,46 @@ export function Products() {
         </div>
       </div>
 
-      {/* Product Detail / Enquiry Modal */}
-      <Dialog open={!!selectedProduct} onOpenChange={(open) => !open && setSelectedProduct(null)}>
-        <DialogContent className="sm:max-w-[800px] p-0 overflow-hidden bg-white">
+      {/* Product Detail / Enquiry Modal with Zoom */}
+      <Dialog open={!!selectedProduct} onOpenChange={(open) => { if (!open) { setSelectedProduct(null); setZoom(1); }}}>
+        <DialogContent className="sm:max-w-[900px] p-0 overflow-hidden bg-white">
           {selectedProduct && (
             <div className="flex flex-col md:flex-row h-full">
-              <div className="w-full md:w-1/2 bg-slate-50 p-8 flex items-center justify-center relative">
+              <div className="w-full md:w-1/2 bg-slate-50 p-8 flex flex-col items-center justify-center relative min-h-[400px]">
                 <div className="absolute top-4 left-4 text-xs font-bold text-slate-400 uppercase tracking-widest">
                   {selectedProduct.category}
                 </div>
-                <img 
-                  src={selectedProduct.image} 
-                  alt={selectedProduct.name} 
-                  className="max-h-[300px] w-auto object-contain drop-shadow-xl" 
-                />
+                
+                {/* Zoom Image */}
+                <div className="overflow-hidden rounded-lg border border-slate-200 mb-4">
+                  <img 
+                    src={selectedProduct.image} 
+                    alt={selectedProduct.name} 
+                    className="max-h-[250px] w-auto object-contain transition-transform duration-300"
+                    style={{ transform: `scale(${zoom})` }}
+                  />
+                </div>
+                
+                {/* Zoom Controls */}
+                <div className="flex gap-2 mb-6">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setZoom(Math.max(0.5, zoom - 0.2))}
+                    className="gap-2"
+                  >
+                    <ZoomOut className="h-4 w-4" /> Zoom Out
+                  </Button>
+                  <span className="px-4 py-2 text-sm font-bold">{Math.round(zoom * 100)}%</span>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setZoom(Math.min(2, zoom + 0.2))}
+                    className="gap-2"
+                  >
+                    <ZoomIn className="h-4 w-4" /> Zoom In
+                  </Button>
+                </div>
               </div>
               
               <div className="w-full md:w-1/2 p-8 flex flex-col">
@@ -205,7 +225,7 @@ export function Products() {
 
                 <div className="space-y-4 flex-grow">
                   <div className="bg-blue-50 p-3 rounded border border-blue-100 text-sm text-blue-800">
-                    <strong>Availability:</strong> In Stock (Bulk & Retail)
+                    <strong>Request Bulk Quote</strong> for competitive pricing on large orders.
                   </div>
                   
                   <form id="enquiry-form" onSubmit={handleEnquiry} className="space-y-3 mt-4">
@@ -215,14 +235,14 @@ export function Products() {
                     <Label htmlFor="phone">Phone Number</Label>
                     <Input id="phone" type="tel" placeholder="+91 98765 43210" required />
                     
-                    <Label htmlFor="quantity">Estimated Quantity</Label>
-                    <Input id="quantity" type="number" placeholder="e.g. 100 units" />
+                    <Label htmlFor="quantity">Estimated Quantity (Units)</Label>
+                    <Input id="quantity" type="number" placeholder="e.g. 500, 1000" />
                   </form>
                 </div>
 
                 <DialogFooter className="mt-8 pt-4 border-t border-slate-100">
                   <Button type="submit" form="enquiry-form" className="w-full bg-primary hover:bg-primary/90 text-lg font-heading h-12">
-                    Send Enquiry
+                    Get Bulk Quote
                   </Button>
                 </DialogFooter>
               </div>
